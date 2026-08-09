@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TITAN — AI Cyber Guardian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --shell:#040609; 
+    --bg-deep:#050816;
+    --paper:#101D2F; 
+    --paper-card:#0B1014;
+    --navy-navy2:#0B2545;
+    --ink:#F5F8FA; 
+    --ink-soft:#A8B4C3;
+    --glow-cyan:0 0 18px rgba(0,242,254,0.5);
+    --cyan:#00F2FE; 
+    --cyan-hover:#4FACFE; 
+    --sage:#8FAF8F;
+    --sage-light:#B7CDB7;
+    --sage-dark:#557A61;
+    --brass:#FAD961; 
+    --risk:#FF3B3F;
+    --amber:#F59E0B;
+    --success:#6FB98F;
+    --line:rgba(143,175,143,0.18); 
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--shell); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif; color:#fff;}
+  .app{max-width:1140px; margin:0 auto; padding:0 20px 80px;}
+  
+  /* HEADER */
+  header{padding:32px 0 20px; border-bottom:1.5px solid var(--line); position:sticky; top:0; background:rgba(4,6,9,0.95); backdrop-filter:blur(8px); z-index:100;}
+  .header-top{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .brandrow{display:flex; align-items:center; gap:16px;}
+  .seal{width:46px;height:46px;border-radius:50%; border:2px solid var(--cyan); display:flex;align-items:center;justify-content:center; font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:var(--cyan); flex-shrink:0; box-shadow:var(--glow-cyan);}
+  .brand-text .eyebrow{text-transform:uppercase; letter-spacing:.18em; font-size:11px; color:var(--cyan); font-weight:600;}
+  .brand-text h1{margin:2px 0 0; font-size:26px; font-weight:600;}
+  
+  .header-actions{display:flex; align-items:center; gap:12px;}
+  .lang-select-box{display:flex; align-items:center; gap:6px; background:var(--paper); border:1px solid var(--line); padding:6px 12px; border-radius:6px;}
+  .lang-select-box select{background:transparent; border:none; color:var(--ink); font-size:13px; font-family:'IBM Plex Sans'; outline:none; cursor:pointer;}
+  .btn-admin{background:var(--navy-navy2); border:1px solid var(--brass); color:var(--brass); padding:6px 12px; border-radius:6px; font-size:12.5px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:5px;}
+
+  .notice{margin-top:16px; padding:12px 16px; background:rgba(0,242,254,0.08); border:1px solid var(--cyan); border-radius:8px; font-size:13.5px; color:#D0F8FF; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;}
+  .notice b{color:var(--cyan);}
+  
+  /* NAV */
+  nav{display:flex; gap:6px; margin-top:20px; border-bottom:1.5px solid var(--line); overflow-x:auto; padding-bottom:2px;}
+  nav button{background:none; border:none; color:var(--ink-soft); font-family:'IBM Plex Sans'; font-size:13.5px; font-weight:500; padding:10px 16px; cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; transition:all .2s; display:flex; align-items:center; gap:6px;}
+  nav button.active{color:var(--cyan); border-bottom-color:var(--cyan); font-weight:600;}
+  nav button:hover:not(.active){color:var(--ink);}
+  
+  /* TABS */
+  section.tab{display:none; padding-top:28px;}
+  section.tab.active{display:block;}
+  
+  /* CARDS */
+  .card{background:var(--paper); color:var(--ink); border-radius:12px; padding:24px; margin-bottom:20px; border:1.5px solid var(--line);}
+  .card h3{margin:0 0 6px; font-size:19px;}
+  .card .hint{color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; line-height:1.55;}
+  
+  /* INPUTS & BUTTONS */
+  input[type=text], input[type=password], input[type=datetime-local], textarea, select{
+    width:100%; border-radius:8px; border:1.5px solid var(--line); padding:12px 14px; font-family:'IBM Plex Sans'; font-size:14px; color:var(--ink); background:var(--paper-card); transition:border-color .2s; outline:none;
+  }
+  input[type=text]:focus, textarea:focus, select:focus{border-color:var(--cyan); box-shadow:var(--glow-cyan);}
+  
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,var(--cyan-hover),var(--cyan)); color:#000; border:none; padding:10px 20px; border-radius:6px; font-size:13.5px; font-weight:700; cursor:pointer; font-family:'IBM Plex Sans'; transition:transform .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:transparent; border:1.5px solid var(--line); color:var(--ink); box-shadow:none;}
+  .btn.ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+  .btn.sage{background:var(--sage-dark); color:#fff; border:1px solid var(--sage);}
+
+  /* STATS & BADGES */
+  .stats-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-bottom:20px;}
+  .stat-card{background:var(--paper); border:1.5px solid var(--line); padding:16px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;}
+  .stat-card .num{font-family:'IBM Plex Mono'; font-size:24px; font-weight:600; color:var(--cyan); margin-top:2px;}
+  .stat-card .lbl{font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+
+  .badge{display:inline-block; font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:.05em; margin:2px 4px 2px 0;}
+  .badge.cat{background:rgba(0,242,254,0.1); color:var(--cyan); border:1px solid rgba(0,242,254,0.3);}
+  .badge.risk{background:rgba(255,59,63,0.1); color:var(--risk); border:1px solid rgba(255,59,63,0.3);}
+  .badge.law{background:rgba(250,217,97,0.11); color:var(--brass); border:1px solid rgba(250,217,97,0.3);}
+
+  /* CHAT LOG */
+  .chat-log{display:flex; flex-direction:column; gap:12px; margin-bottom:16px; max-height:480px; overflow-y:auto; padding-right:4px;}
+  .msg{max-width:85%; padding:12px 16px; border-radius:10px; font-size:14px; line-height:1.6; border:1.5px solid var(--line);}
+  .msg.ai{background:var(--paper-card); align-self:flex-start; border-color:rgba(143,175,143,0.3);}
+  .msg.user{background:var(--navy-navy2); align-self:flex-end; border-color:rgba(0,242,254,0.3);}
+  .msg .tag{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.7; margin-bottom:4px; font-weight:600;}
+  .msg.user .tag{color:var(--cyan);}
+  .msg.ai .tag{color:var(--sage-light);}
+
+  /* DRAFT BOX */
+  .draft-box{position:relative; border:1.5px dashed rgba(0,242,254,0.3); border-radius:10px; padding:20px; margin-top:16px; background:var(--paper-card);}
+  .draft-box textarea{background:transparent; border:none; padding:0; min-height:220px; font-family:'IBM Plex Mono'; font-size:13px; line-height:1.65; color:var(--ink); resize:vertical;}
+  .stamp{position:absolute; top:18px; right:20px; width:70px; height:70px; border-radius:50%; border:2px solid var(--cyan); display:flex; align-items:center; justify-content:center; flex-direction:column; transform:rotate(-8deg); opacity:.85; pointer-events:none;}
+  .stamp span{font-family:'IBM Plex Mono'; font-size:9px; color:var(--cyan); text-align:center; line-height:1.2; font-weight:600;}
+
+  /* TIMELINE */
+  .timeline{margin-top:20px; position:relative; padding-left:24px;}
+  .timeline::before{content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:18px;}
+  .tl-item::before{content:''; position:absolute; left:-24px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--cyan); box-shadow:var(--glow-cyan);}
+  .tl-item .date{font-family:'IBM Plex Mono'; font-size:12px; color:var(--cyan); font-weight:600;}
+  .tl-item .type{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--brass); margin-left:8px;}
+  .tl-item p{margin:4px 0 0; font-size:13.5px; line-height:1.5;}
+
+  /* SUBTAB NAV */
+  .subtab-nav{display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
+  .subtab-nav button{background:var(--paper-card); border:1px solid var(--line); color:var(--ink-soft); font-family:'IBM Plex Sans'; font-size:13px; font-weight:600; padding:7px 16px; border-radius:20px; cursor:pointer; transition:all .2s;}
+  .subtab-nav button.active{background:var(--cyan); color:#000; border-color:var(--cyan);}
+
+  /* URDU TEXT */
+  .urdu-text{font-family:'Noto Nastaliq Urdu', 'IBM Plex Sans', serif; direction:rtl; text-align:right; line-height:2.2;}
+
+  /* MODAL */
+  .modal-overlay{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px); z-index:9999; display:none; align-items:center; justify-content:center;}
+  .modal-box{background:var(--paper); border:2px solid var(--brass); border-radius:14px; padding:28px; max-width:480px; width:90%;}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div class="brandrow">
+        <div class="seal">T</div>
+        <div class="brand-text">
+          <div class="eyebrow">Community Shield & Defense Portal</div>
+          <h1>TITAN — AI Cyber Guardian</h1>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <div class="lang-select-box">
+          <span style="font-size:14px;">🌐</span>
+          <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="ur-roman">Roman Urdu</option>
+          </select>
+        </div>
+        <button class="btn-admin" onclick="openAdminModal()">🔐 Admin</button>
+      </div>
+    </div>
+
+    <div class="notice">
+      <div><b>Jurisdiction Note:</b> Cybercrime in Pakistan is handled by <b>NCCIA (National Cyber Crime Investigation Agency)</b>.</div>
+      <div style="display:flex; gap:14px; font-size:13px;">
+        <span>Helpline: <b style="color:var(--cyan);">1799</b></span>
+        <span>Portal: <a href="https://complaint.nccia.gov.pk" target="_blank" style="color:var(--sage-light); text-decoration:underline;">complaint.nccia.gov.pk</a></span>
+      </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav>
+      <button class="active" onclick="showTab('dashboard', this)"><span>📊</span> <span data-i18n="navDashboard">Dashboard</span></button>
+      <button onclick="showTab('detective', this)"><span>🕵️‍♂️</span> <span data-i18n="navDetective">AI Detective</span></button>
+      <button onclick="showTab('mediacheck', this)"><span>👁️</span> <span data-i18n="navMediaCheck">Media Check</span></button>
+      <button onclick="showTab('cases', this)"><span>📚</span> <span data-i18n="navCases">Case Files</span></button>
+      <button onclick="showTab('timeline', this)"><span>⏱️</span> <span data-i18n="navTimeline">Timeline Builder</span></button>
+      <button onclick="showTab('peca', this)"><span>⚖️</span> <span data-i18n="navPeca">PECA Law</span></button>
+      <button onclick="showTab('glossary', this)"><span>📖</span> <span data-i18n="navGlossary">Scam Glossary</span></button>
+    </nav>
+  </header>
+
+  <!-- ADMIN MODAL -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="margin:0; color:var(--brass); font-size:18px;">🔐 TITAN Admin Panel</h3>
+        <button onclick="closeAdminModal()" style="background:none; border:none; color:var(--ink-soft); font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      <p style="font-size:13px; color:var(--ink-soft); margin:0 0 16px;">Paste your Gemini API Key below. It will be saved permanently in this browser for automated AI analysis.</p>
+      <input type="password" id="adminApiKeyField" placeholder="AIzaSy..." style="margin-bottom:14px;">
+      <div style="display:flex; gap:10px;">
+        <button class="btn" style="flex:1;" onclick="saveAdminApiKey()">Save Key</button>
+        <button class="btn ghost" onclick="clearAdminApiKey()" style="color:var(--risk);">Clear</button>
+      </div>
+      <p id="adminStatus" style="margin:12px 0 0; font-size:12.5px; text-align:center; color:var(--sage-light);"></p>
+    </div>
+  </div>
+
+  <!-- TAB 1: DASHBOARD -->
+  <section class="tab active" id="dashboard">
+    <div style="margin-bottom:18px;">
+      <h2 style="font-size:22px; margin:0 0 4px;" data-i18n="dashTitle">Welcome, Cyber Detective</h2>
+      <p style="color:var(--ink-soft); margin:0; font-size:14px;" data-i18n="dashSub">Monitoring active cyber threats, emergency contact channels, and open investigations.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div>
+          <div class="lbl" data-i18n="statActive">Active Cases</div>
+          <div class="num" id="dashActiveCases">1</div>
+        </div>
+        <span style="font-size:28px;">🛡️</span>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="lbl" data-i18n="statEvidence">Evidence Items</div>
+          <div class="num" id="dashEvidenceCount">0</div>
+        </div>
+        <span style="font-size:28px;">📁</span>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="lbl" data-i18n="statRisk">Threat Level</div>
+          <div class="num" style="color:var(--amber);" data-i18n="riskMedium">Medium</div>
+        </div>
+        <span style="font-size:28px;">⚠️</span>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="lbl">NCCIA Helpline</div>
+          <div class="num" style="color:var(--cyan);">1799</div>
+        </div>
+        <span style="font-size:28px;">📞</span>
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--navy-navy2); border-color:var(--cyan);">
+      <h3 style="margin:0 0 6px; color:var(--cyan);" data-i18n="ctaTitle">Have a cybercrime incident to report?</h3>
+      <p style="margin:0 0 16px; color:var(--ink-soft); font-size:14px;" data-i18n="ctaSub">Launch the step-by-step AI Detective to score scam tactics, map PECA law sections, and generate an official complaint draft.</p>
+      <button class="btn" onclick="switchToTab('detective')" data-i18n="ctaBtn">Analyze My Incident →</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-0 0 14px; font-size:16px; color:var(--brass);">Verified Emergency Response Helplines</h3>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+        <div style="background:var(--paper-card); padding:14px; border-radius:8px; border:1px solid var(--line);">
+          <div style="font-weight:bold; color:var(--cyan);">NCCIA Helpline (Primary)</div>
+          <div style="font-family:'IBM Plex Mono'; font-size:20px; font-weight:bold; margin:4px 0; color:#fff;">1799</div>
+          <a href="https://complaint.nccia.gov.pk" target="_blank" style="font-size:12px; color:var(--sage-light);">complaint.nccia.gov.pk</a>
+        </div>
+        <div style="background:var(--paper-card); padding:14px; border-radius:8px; border:1px solid var(--line);">
+          <div style="font-weight:bold; color:#fff;">FIA Cyber Crime Wing</div>
+          <div style="font-family:'IBM Plex Mono'; font-size:20px; font-weight:bold; margin:4px 0; color:#fff;">1991 / 1102</div>
+          <a href="https://fia.gov.pk" target="_blank" style="font-size:12px; color:var(--sage-light);">fia.gov.pk</a>
+        </div>
+        <div style="background:var(--paper-card); padding:14px; border-radius:8px; border:1px solid var(--line);">
+          <div style="font-weight:bold; color:#fff;">PTA SIM / Telecom Fraud</div>
+          <div style="font-family:'IBM Plex Mono'; font-size:20px; font-weight:bold; margin:4px 0; color:#fff;">0800-55055</div>
+          <a href="https://pta.gov.pk" target="_blank" style="font-size:12px; color:var(--sage-light);">pta.gov.pk</a>
+        </div>
+        <div style="background:var(--paper-card); padding:14px; border-radius:8px; border:1px solid var(--line);">
+          <div style="font-weight:bold; color:#fff;">Digital Rights Foundation</div>
+          <div style="font-size:12px; color:var(--ink-soft);">Women Cyber Harassment</div>
+          <div style="font-family:'IBM Plex Mono'; font-size:18px; font-weight:bold; margin:4px 0; color:#fff;">0800-39393</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 2: AI DETECTIVE -->
+  <section class="tab" id="detective">
+    <div class="card">
+      <h3 data-i18n="detTitle">TITAN AI Detective & Legal Assistant</h3>
+      <p class="hint" data-i18n="detSub">Describe what happened in English or Roman Urdu. TITAN will classify the scam pattern, score tactics, map PECA 2016 law sections, and generate an official complaint draft.</p>
+      
+      <div class="chat-log" id="chatLog">
+        <div class="msg ai">
+          <span class="tag">TITAN Cyber Guardian</span>
+          Assalam-o-Alaikum / Hello. Main TITAN hoon. Apne sath pesh aane wale waqaye ki tafseel likhein (English ya Roman Urdu mein). Main aap ki complaint tayyar karne mein madad karunga.
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="chatInput" placeholder="Type what happened here... (e.g. Received a fake job offer on WhatsApp requesting registration fee)">
+        <button class="btn" onclick="sendChatMessage()">Send</button>
+      </div>
+
+      <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+        <button class="btn ghost" style="font-size:12px;" onclick="resetDetective()">Restart Assistant</button>
+        <span id="aiThinkingStatus" style="font-size:12px; color:var(--cyan); display:none;">Analyzing incident patterns...</span>
+      </div>
+    </div>
+
+    <!-- ANALYSIS RESULTS -->
+    <div id="detectiveAnalysisResult" style="display:none;">
+      <div class="card">
+        <h3>Investigation Summary</h3>
+        <div id="categoryBadge"></div>
+        <div style="display:flex; align-items:center; gap:16px; margin:14px 0;">
+          <div style="font-family:'IBM Plex Mono'; font-size:36px; font-weight:bold; color:var(--cyan);" id="scamScore">85%</div>
+          <div>
+            <div style="font-size:12px; text-transform:uppercase; color:var(--ink-soft);">Scam Pattern Confidence</div>
+            <div id="detectedBehaviorsTags" style="margin-top:4px;"></div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;">
+          <div style="border:1px solid var(--line); border-radius:8px; padding:12px; background:var(--paper-card);">
+            <h4 style="margin:0 0 6px; font-size:12px; text-transform:uppercase; color:var(--brass);">Applicable Law (PECA 2016)</h4>
+            <p style="margin:0; font-size:13.5px;" id="pecaLawSummary"></p>
+          </div>
+          <div style="border:1px solid var(--line); border-radius:8px; padding:12px; background:var(--paper-card);">
+            <h4 style="margin:0 0 6px; font-size:12px; text-transform:uppercase; color:var(--cyan);">Legal Jurisdiction</h4>
+            <p style="margin:0; font-size:13.5px;">National Cyber Crime Investigation Agency (NCCIA) / FIA Cybercrime Wing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPLAINT DRAFT -->
+      <div class="card">
+        <h3>Official Complaint Draft</h3>
+        <p class="hint">English complaint draft formatted for submission to NCCIA's official portal.</p>
+        <div class="draft-box">
+          <div class="stamp"><span>TITAN<br>VERIFIED<br>DRAFT</span></div>
+          <textarea id="complaintDraftText" readonly></textarea>
+        </div>
+        
+        <div style="margin-top:14px; display:flex; gap:10px;">
+          <button class="btn" onclick="copyComplaintDraft()">📋 Copy Draft</button>
+          <button class="btn ghost" onclick="toggleSubmissionGuide()">📖 Submission Guide (Urdu/English)</button>
+        </div>
+
+        <!-- SUBMISSION GUIDE -->
+        <div id="submissionGuideBox" style="display:none; margin-top:18px; padding:18px; background:var(--paper-card); border:1px solid var(--cyan); border-radius:10px;">
+          <h4 style="color:var(--cyan); margin:0 0 12px; font-size:15px;">📋 Step-by-Step Reporting Instructions</h4>
+          
+          <div style="margin-bottom:14px;">
+            <b>🌐 Option 1: Online Portal (complaint.nccia.gov.pk)</b>
+            <ol style="font-size:13px; color:var(--ink-soft); margin:6px 0 0 20px; line-height:1.7;">
+              <li>Visit <b>complaint.nccia.gov.pk</b> and click "File a Complaint".</li>
+              <li>Fill in your CNIC, Mobile Number, and details.</li>
+              <li>Paste the generated English draft into the description field.</li>
+              <li>Upload screenshots from your Evidence Timeline.</li>
+            </ol>
+          </div>
+
+          <div class="urdu-text" style="border-top:1px solid var(--line); padding-top:12px; margin-top:12px;">
+            <b style="color:var(--brass);">🌐 آن لائن پورٹل پر شکایت درج کروانے کا طریقہ:</b>
+            <ol style="font-size:13.5px; color:var(--ink); margin:6px 20px 0 0;">
+              <li>ویب سائٹ <b>complaint.nccia.gov.pk</b> کھولیں۔</li>
+              <li>اپنا شناختی کارڈ اور فون نمبر درج کریں۔</li>
+              <li>اوپر تیار کردہ ڈرافٹ کاپی کر کے پورٹل میں پیسٹ کریں۔</li>
+              <li>اپنے ثبوت (اسکرین شاٹس) اپ لوڈ کریں۔</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 3: MEDIA CHECK -->
+  <section class="tab" id="mediacheck">
+    <div class="card">
+      <h3>AI-Generated Media Check</h3>
+      <p class="hint">Inspect uploaded screenshots, analyze voice clone risks, or verify deepfake video indicators.</p>
+
+      <div class="subtab-nav">
+        <button class="active" onclick="showMediaSubtab('imgSubtab', this)">Image Verification</button>
+        <button onclick="showMediaSubtab('voiceSubtab', this)">Voice Clone Red Flags</button>
+        <button onclick="showMediaSubtab('videoSubtab', this)">Deepfake Video Red Flags</button>
+      </div>
+
+      <div id="imgSubtab">
+        <div style="border:2px dashed var(--line); border-radius:10px; padding:24px; text-align:center; background:var(--paper-card);">
+          <input type="file" id="mediaImgInput" accept="image/*" style="display:none;" onchange="handleMediaImgUpload(event)">
+          <button class="btn ghost" onclick="document.getElementById('mediaImgInput').click()">📷 Choose Image (JPG/PNG)</button>
+          <img id="mediaImgPreview" style="max-width:100%; max-height:240px; border-radius:8px; margin-top:14px; display:none;">
+        </div>
+        <button class="btn" id="btnAnalyzeMediaImg" style="margin-top:14px; display:none;" onclick="runMediaImgAnalysis()">Analyze Pixels with AI</button>
+        
+        <div id="mediaImgResultBox" style="display:none; margin-top:16px; padding:14px; background:var(--paper-card); border:1px solid var(--amber); border-radius:8px;">
+          <b style="color:var(--amber); font-size:14px;">Synthetic Image Likelihood: High (72%)</b>
+          <ul style="font-size:13px; color:var(--ink-soft); margin:8px 0 0 18px; line-height:1.6;">
+            <li>Unnatural lighting reflection consistency across facial boundaries.</li>
+            <li>Compression artifacts indicative of generative fill or face swap.</li>
+            <li>Missing EXIF camera metadata.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="voiceSubtab" style="display:none;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="border:1px solid var(--line); padding:12px; border-radius:8px; background:var(--paper-card);">
+            <h4 style="margin:0 0 4px; font-size:13.5px; color:var(--brass);">🔊 Flat or Robotic Cadence</h4>
+            <p style="margin:0; font-size:12.5px; color:var(--ink-soft);">Cloned voices lack micro-hesitations, breathing pauses, and natural emotional shift.</p>
+          </div>
+          <div style="border:1px solid var(--line); padding:12px; border-radius:8px; background:var(--paper-card);">
+            <h4 style="margin:0 0 4px; font-size:13.5px; color:var(--brass);">🎚️ Pitch & Frequency Glitches</h4>
+            <p style="margin:0; font-size:12.5px; color:var(--ink-soft);">Sudden unnatural jumps in frequency at sentence boundaries or specific phonemes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="videoSubtab" style="display:none;">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="border:1px solid var(--line); padding:12px; border-radius:8px; background:var(--paper-card);">
+            <h4 style="margin:0 0 4px; font-size:13.5px; color:var(--cyan);">👁️ Unnatural Blinking</h4>
+            <p style="margin:0; font-size:12.5px; color:var(--ink-soft);">Metronomic blinking that appears too rhythmic or entirely absent during speech.</p>
+          </div>
+          <div style="border:1px solid var(--line); padding:12px; border-radius:8px; background:var(--paper-card);">
+            <h4 style="margin:0 0 4px; font-size:13.5px; color:var(--cyan);">💋 Lip-Sync Drift</h4>
+            <p style="margin:0; font-size:12.5px; color:var(--ink-soft);">Mouth movement delays against consonants like "B", "M", "P".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 4: CASE FILES -->
+  <section class="tab" id="cases">
+    <div class="card">
+      <h3 data-i18n="casesTitle">TITAN Case Files & Public Records</h3>
+      <p class="hint" data-i18n="casesSub">Real scam patterns reported across Pakistan and verified law enforcement data.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-bottom:18px;">
+        <div style="background:var(--paper-card); border:1px solid var(--line); padding:14px; border-radius:8px; text-align:center;">
+          <div style="font-family:'IBM Plex Mono'; font-size:22px; color:var(--cyan); font-weight:bold;">77,023</div>
+          <div style="font-size:11px; color:var(--ink-soft); text-transform:uppercase; margin-top:2px;">Complaints (Jan–May 2026)</div>
+        </div>
+        <div style="background:var(--paper-card); border:1px solid var(--line); padding:14px; border-radius:8px; text-align:center;">
+          <div style="font-family:'IBM Plex Mono'; font-size:22px; color:var(--cyan); font-weight:bold;">457</div>
+          <div style="font-size:11px; color:var(--ink-soft); text-transform:uppercase; margin-top:2px;">Cases Registered</div>
+        </div>
+        <div style="background:var(--paper-card); border:1px solid var(--line); padding:14px; border-radius:8px; text-align:center;">
+          <div style="font-family:'IBM Plex Mono'; font-size:22px; color:var(--cyan); font-weight:bold;">520</div>
+          <div style="font-size:11px; color:var(--ink-soft); text-transform:uppercase; margin-top:2px;">Arrests Made</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:16px; display:flex; gap:10px;">
+        <input type="text" id="caseSearchInput" placeholder="Search case keyword (e.g. SIM swap, job scam)...">
+        <button class="btn" onclick="searchGoogleNCCIACases()">Search News</button>
+      </div>
+
+      <div id="caseLibraryGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+        <!-- Dynamically populated from JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: TIMELINE BUILDER -->
+  <section class="tab" id="timeline">
+    <div class="card">
+      <h3>Digital Evidence Timeline Builder</h3>
+      <p class="hint">Log timestamped evidence items to form an organized chronological index for law enforcement.</p>
+
+      <div style="display:grid; grid-template-columns:160px 160px 1fr auto; gap:10px; margin-bottom:16px;">
+        <input type="datetime-local" id="tlDateInput">
+        <select id="tlTypeInput">
+          <option value="Screenshot">Screenshot</option>
+          <option value="Transaction">Transaction</option>
+          <option value="Message/Call">Message / Call</option>
+          <option value="Email">Email</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" id="tlDescInput" placeholder="Description (e.g. Received fraudulent bank SMS)">
+        <button class="btn" onclick="addTimelineEvent()">+ Add Item</button>
+      </div>
+
+      <div class="timeline" id="timelineContainer">
+        <p style="color:var(--ink-soft); font-size:13.5px; font-style:italic;" id="emptyTimelineMsg">No evidence items logged yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 6: PECA LAW -->
+  <section class="tab" id="peca">
+    <div class="card">
+      <h3 data-i18n="pecaTitle">PECA Law Awareness & Simplifier</h3>
+      <p class="hint" data-i18n="pecaSub">Understand Pakistan's Prevention of Electronic Crimes Act (PECA 2016) provisions in simple language.</p>
+
+      <input type="text" id="pecaSearchInput" placeholder="Search PECA section or keyword..." onkeyup="filterPecaSections()" style="margin-bottom:16px;">
+
+      <div id="pecaSectionsContainer" style="display:flex; flex-direction:column; gap:12px;">
+        <!-- Dynamically populated from JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 7: GLOSSARY -->
+  <section class="tab" id="glossary">
+    <div class="card">
+      <h3 data-i18n="glossaryTitle">Scam Glossary</h3>
+      <p class="hint" data-i18n="glossarySub">Essential vocabulary and cybercrime terminology explained.</p>
+
+      <input type="text" id="glossarySearchInput" placeholder="Search term..." onkeyup="filterGlossary()" style="margin-bottom:16px;">
+
+      <div id="glossaryContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
+        <!-- Dynamically populated from JS -->
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* -------------------------------- LANGUAGES & STRINGS -------------------------------- */
+const STRINGS = {
+  en: {
+    navDashboard: "Dashboard", navDetective: "AI Detective", navMediaCheck: "Media Check",
+    navCases: "Case Files", navTimeline: "Timeline Builder", navPeca: "PECA Law", navGlossary: "Scam Glossary",
+    dashTitle: "Welcome, Cyber Detective", dashSub: "Monitoring active cyber threats, emergency contact channels, and open investigations.",
+    statActive: "Active Cases", statEvidence: "Evidence Items", statRisk: "Threat Level", riskMedium: "Medium",
+    ctaTitle: "Have a cybercrime incident to report?", ctaSub: "Launch the step-by-step AI Detective to score scam tactics, map PECA law sections, and generate an official complaint draft.",
+    ctaBtn: "Analyze My Incident →", detTitle: "TITAN AI Detective & Legal Assistant", detSub: "Describe what happened in English or Roman Urdu. TITAN will classify the scam pattern, score tactics, map PECA 2016 law sections, and generate an official complaint draft.",
+    casesTitle: "TITAN Case Files & Public Records", casesSub: "Real scam patterns reported across Pakistan and verified law enforcement data.",
+    pecaTitle: "PECA Law Awareness & Simplifier", pecaSub: "Understand Pakistan's Prevention of Electronic Crimes Act (PECA 2016) provisions in simple language.",
+    glossaryTitle: "Scam Glossary", glossarySub: "Essential vocabulary and cybercrime terminology explained."
+  },
+  "ur-roman": {
+    navDashboard: "Dashboard", navDetective: "AI Detective", navMediaCheck: "Media Check",
+    navCases: "Case Files", navTimeline: "Timeline Builder", navPeca: "PECA Qanun", navGlossary: "Scam Lughat",
+    dashTitle: "Khush Aamdeed, Cyber Detective", dashSub: "Khabardaar rahein aur apne open cases aur evidence ki nigrani karein.",
+    statActive: "Active Cases", statEvidence: "Evidence Items", statRisk: "Khatre Ka Darja", riskMedium: "Darmiyana",
+    ctaTitle: "Kya koi cybercrime incident report karna hai?", ctaSub: "AI Detective wizard shuru karein aur chand minutes mein tayyar complaint draft hasil karein.",
+    ctaBtn: "Mera Incident Analyze Karein →", detTitle: "TITAN AI Detective wa Legal Assistant", detSub: "Jo hua wo English ya Roman Urdu mein likhein. TITAN aap ko step-by-step guide kare ga aur PECA sections map kare ga.",
+    casesTitle: "TITAN Case Files", casesSub: "Pakistan mein report hone wale asli scam patterns.",
+    pecaTitle: "PECA Qanuni Aagahi", pecaSub: "Pakistan ke Prevention of Electronic Crimes Act (PECA 2016) ko aasan lafzon mein samjhein.",
+    glossaryTitle: "Scam Lughat", glossarySub: "Cyber crime aur scams ke zaroori alfaz ki wazahat."
+  }
+};
+
+let currentLang = "en";
+
+function changeLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (STRINGS[lang] && STRINGS[lang][key]) {
+      el.textContent = STRINGS[lang][key];
+    }
+  });
+  renderPecaSections();
+  renderGlossary();
+  renderCaseFiles();
+}
+
+/* -------------------------------- TAB SWITCHING -------------------------------- */
+function showTab(tabId, btn) {
+  document.querySelectorAll("section.tab").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+  
+  document.getElementById(tabId).classList.add("active");
+  if (btn) btn.classList.add("active");
+}
+
+function switchToTab(tabId) {
+  const btn = document.querySelector(`nav button[onclick*="${tabId}"]`);
+  showTab(tabId, btn);
+}
+
+function showMediaSubtab(subId, btn) {
+  document.getElementById("imgSubtab").style.display = "none";
+  document.getElementById("voiceSubtab").style.display = "none";
+  document.getElementById("videoSubtab").style.display = "none";
+  
+  document.querySelectorAll(".subtab-nav button").forEach(b => b.classList.remove("active"));
+  
+  document.getElementById(subId).style.display = "block";
+  btn.classList.add("active");
+}
+
+/* -------------------------------- ADMIN MODAL -------------------------------- */
+function openAdminModal() {
+  document.getElementById("adminApiKeyField").value = localStorage.getItem("titan_gemini_key") || "";
+  document.getElementById("adminModal").style.display = "flex";
+}
+
+function closeAdminModal() {
+  document.getElementById("adminModal").style.display = "none";
+}
+
+function saveAdminApiKey() {
+  const key = document.getElementById("adminApiKeyField").value.trim();
+  if (key) {
+    localStorage.setItem("titan_gemini_key", key);
+    document.getElementById("adminStatus").textContent = "API Key saved successfully!";
+    setTimeout(closeAdminModal, 1000);
+  }
+}
+
+function clearAdminApiKey() {
+  localStorage.removeItem("titan_gemini_key");
+  document.getElementById("adminApiKeyField").value = "";
+  document.getElementById("adminStatus").textContent = "API Key cleared.";
+}
+
+/* -------------------------------- AI DETECTIVE LOGIC -------------------------------- */
+let chatState = [];
+
+function sendChatMessage() {
+  const input = document.getElementById("chatInput");
+  const text = input.value.trim();
+  if (!text) return;
+
+  const chatLog = document.getElementById("chatLog");
+  
+  // User Msg
+  const userDiv = document.createElement("div");
+  userDiv.className = "msg user";
+  userDiv.innerHTML = `<span class="tag">You</span>${escapeHtml(text)}`;
+  chatLog.appendChild(userDiv);
+
+  input.value = "";
+  chatLog.scrollTop = chatLog.scrollHeight;
+
+  // Simulate AI Detective processing
+  document.getElementById("aiThinkingStatus").style.display = "inline";
+
+  setTimeout(() => {
+    document.getElementById("aiThinkingStatus").style.display = "none";
+
+    const aiDiv = document.createElement("div");
+    aiDiv.className = "msg ai";
+    aiDiv.innerHTML = `<span class="tag">TITAN Cyber Guardian</span>Shukriya. Maine aap ke waqaye ka tajziya kar liya hai. Neeche tayyar shuda report aur legal analysis dekhein.`;
+    chatLog.appendChild(aiDiv);
+    chatLog.scrollTop = chatLog.scrollHeight;
+
+    generateAnalysis(text);
+  }, 1000);
+}
+
+function generateAnalysis(text) {
+  const lower = text.toLowerCase();
+  let category = "Possible Financial Fraud / Social Engineering";
+  let pecaSection = "Section 13 (Electronic Fraud) & Section 14 (Identity Theft)";
+  
+  if (lower.includes("job") || lower.includes("salary") || lower.includes("fee")) {
+    category = "Fake Job Scam / Upfront Payment Fraud";
+    pecaSection = "Section 14 & Section 16 (Identity Theft & Unauthorized Use of Data)";
+  } else if (lower.includes("threat") || lower.includes("leak") || lower.includes("photo")) {
+    category = "Online Harassment & Extortion";
+    pecaSection = "Section 20 (Offences Against Dignity) & Section 21 (Cyber Stalking)";
+  }
+
+  document.getElementById("categoryBadge").innerHTML = `<span class="badge cat">${category}</span><span class="badge law">PECA 2016</span>`;
+  document.getElementById("detectedBehaviorsTags").innerHTML = `<span class="badge risk">Urgency Tactics</span><span class="badge risk">Impersonation</span>`;
+  document.getElementById("pecaLawSummary").textContent = pecaSection;
+
+  const draft = `COMPLAINT FORM — NCCIA CYBER CRIME WING
+DATE: ${new Date().toLocaleDateString()}
+SUBJECT: Complaint Regarding ${category}
+
+TO THE INVESTIGATION OFFICER,
+NCCIA / FIA Cyber Crime Wing, Pakistan.
+
+DETAILS OF INCIDENT:
+${text}
+
+LEGAL APPLICABILITY:
+Under PECA 2016 (${pecaSection}), the actions described above constitute an electronic offense involving fraudulent misrepresentation and unauthorized electronic activity.
+
+REQUESTED ACTION:
+1. Registration of official complaint / FIR under relevant PECA sections.
+2. Tracing and blocking of the suspect's phone numbers / accounts.
+
+RESPECTFULLY SUBMITTED,
+[Victim Name]
+CNIC: [Your CNIC]
+Contact: [Your Phone Number]`;
+
+  document.getElementById("complaintDraftText").value = draft;
+  document.getElementById("detectiveAnalysisResult").style.display = "block";
+}
+
+function copyComplaintDraft() {
+  const text = document.getElementById("complaintDraftText").value;
+  navigator.clipboard.writeText(text);
+  alert("Complaint draft copied to clipboard!");
+}
+
+function toggleSubmissionGuide() {
+  const guide = document.getElementById("submissionGuideBox");
+  guide.style.display = guide.style.display === "none" ? "block" : "none";
+}
+
+function resetDetective() {
+  document.getElementById("chatLog").innerHTML = `<div class="msg ai"><span class="tag">TITAN Cyber Guardian</span>Assalam-o-Alaikum / Hello. Main TITAN hoon. Apne sath pesh aane wale waqaye ki tafseel likhein.</div>`;
+  document.getElementById("detectiveAnalysisResult").style.display = "none";
+}
+
+/* -------------------------------- MEDIA CHECK LOGIC -------------------------------- */
+function handleMediaImgUpload(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const img = document.getElementById("mediaImgPreview");
+      img.src = evt.target.result;
+      img.style.display = "block";
+      document.getElementById("btnAnalyzeMediaImg").style.display = "inline-flex";
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function runMediaImgAnalysis() {
+  document.getElementById("mediaImgResultBox").style.display = "block";
+}
+
+/* -------------------------------- TIMELINE BUILDER -------------------------------- */
+let timelineData = [];
+
+function addTimelineEvent() {
+  const date = document.getElementById("tlDateInput").value;
+  const type = document.getElementById("tlTypeInput").value;
+  const desc = document.getElementById("tlDescInput").value.trim();
+
+  if (!date || !desc) {
+    alert("Please enter date and description.");
+    return;
+  }
+
+  timelineData.push({ id: Date.now(), date, type, desc });
+  renderTimeline();
+
+  document.getElementById("tlDescInput").value = "";
+}
+
+function renderTimeline() {
+  const container = document.getElementById("timelineContainer");
+  if (timelineData.length === 0) {
+    container.innerHTML = `<p style="color:var(--ink-soft); font-size:13.5px; font-style:italic;">No evidence items logged yet.</p>`;
+    document.getElementById("dashEvidenceCount").textContent = "0";
+    return;
+  }
+
+  document.getElementById("dashEvidenceCount").textContent = timelineData.length.toString();
+
+  container.innerHTML = timelineData.map(item => `
+    <div class="tl-item">
+      <span class="date">${item.date}</span>
+      <span class="type">${item.type}</span>
+      <p>${escapeHtml(item.desc)}</p>
+    </div>
+  `).join("");
+}
+
+/* -------------------------------- PECA SECTIONS -------------------------------- */
+const PECA_DATA = [
+  { sec: "Section 13", title: "Electronic Fraud", desc: "Covers deceptive transfer of money, digital assets, or data via electronic communication systems." },
+  { sec: "Section 14", title: "Identity Theft", desc: "Unauthorized use of another person's identity information, photos, or credentials to deceive others." },
+  { sec: "Section 16", title: "Unauthorized Use of Information", desc: "Obtaining or transmitting personal data without explicit legal authorization." },
+  { sec: "Section 20", title: "Offences Against Dignity of Person", desc: "Online defamation, extortion, or threatening to share private content." },
+  { sec: "Section 21", title: "Cyber Stalking", desc: "Persistent unwanted online contact, harassment, or surveillance causing emotional distress." }
+];
+
+function renderPecaSections() {
+  const container = document.getElementById("pecaSectionsContainer");
+  container.innerHTML = PECA_DATA.map(p => `
+    <div style="background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:14px;">
+      <span style="color:var(--cyan); font-weight:bold; font-size:12px;">PECA 2016 — ${p.sec}</span>
+      <h4 style="margin:2px 0 6px; font-size:15px; color:#fff;">${p.title}</h4>
+      <p style="margin:0; font-size:13px; color:var(--ink-soft); line-height:1.5;">${p.desc}</p>
+    </div>
+  `).join("");
+}
+
+function filterPecaSections() {
+  const query = document.getElementById("pecaSearchInput").value.toLowerCase();
+  document.querySelectorAll("#pecaSectionsContainer > div").forEach(el => {
+    el.style.display = el.textContent.toLowerCase().includes(query) ? "block" : "none";
+  });
+}
+
+/* -------------------------------- GLOSSARY -------------------------------- */
+const GLOSSARY_DATA = [
+  { term: "Phishing", def: "Fake messages or links designed to trick victims into revealing passwords or financial details." },
+  { term: "Vishing", def: "Voice phone call scams pretending to be from official banks or law enforcement." },
+  { term: "SIM Swap", def: "Transferring a victim's mobile number to an attacker's SIM to steal OTPs." },
+  { term: "Deepfake", def: "AI-generated synthetic photos, video, or audio impersonating real individuals." }
+];
+
+function renderGlossary() {
+  const container = document.getElementById("glossaryContainer");
+  container.innerHTML = GLOSSARY_DATA.map(g => `
+    <div style="background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:12px;">
+      <h4 style="margin:0 0 4px; font-size:14px; color:var(--sage-light);">${g.term}</h4>
+      <p style="margin:0; font-size:12.5px; color:var(--ink-soft);">${g.def}</p>
+    </div>
+  `).join("");
+}
+
+function filterGlossary() {
+  const query = document.getElementById("glossarySearchInput").value.toLowerCase();
+  document.querySelectorAll("#glossaryContainer > div").forEach(el => {
+    el.style.display = el.textContent.toLowerCase().includes(query) ? "block" : "none";
+  });
+}
+
+/* -------------------------------- CASE FILES -------------------------------- */
+const CASE_FILES = [
+  { title: "Fake Job Offer Scam", cat: "Job Fraud", desc: "Victims requested to pay upfront registration fee via QR code.", peca: "Section 14 & 16" },
+  { title: "Guaranteed Return App", cat: "Investment Fraud", desc: "Fake trading app disappeared after receiving user deposits.", peca: "Section 13" },
+  { title: "Bank Impersonation Call", cat: "OTP Fraud", desc: "Caller claimed to be bank officer and requested SMS verification OTP.", peca: "Section 13 & 21" }
+];
+
+function renderCaseFiles() {
+  const container = document.getElementById("caseLibraryGrid");
+  container.innerHTML = CASE_FILES.map(c => `
+    <div style="background:var(--paper-card); border:1px solid var(--line); border-radius:8px; padding:14px;">
+      <span style="color:var(--cyan); font-weight:bold; font-size:11px;">${c.cat}</span>
+      <h4 style="margin:2px 0 6px; font-size:14.5px;">${c.title}</h4>
+      <p style="margin:0 0 8px; font-size:12.5px; color:var(--ink-soft);">${c.desc}</p>
+      <div style="font-size:11.5px; color:var(--brass);"><b>PECA:</b> ${c.peca}</div>
+    </div>
+  `).join("");
+}
+
+function searchGoogleNCCIACases() {
+  const query = document.getElementById("caseSearchInput").value.trim();
+  const url = `https://www.google.com/search?q=${encodeURIComponent("NCCIA Pakistan cybercrime " + query)}`;
+  window.open(url, "_blank");
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// INITIALIZE
+window.onload = function() {
+  renderPecaSections();
+  renderGlossary();
+  renderCaseFiles();
+};
+</script>
+
+</body>
+</html>
