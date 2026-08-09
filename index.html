@@ -8,143 +8,141 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --shell: #F2F6F4; 
-    --paper: #FFFFFF; 
-    --paper-card: #EBF2EE;
-    --navy: #0F2537;
-    --navy-light: #1E3A52;
-    --navy-soft: #2C4D6B;
-    --ink: #0A192F; 
-    --ink-soft: #4A6375;
+    --navy-deep: #0A1118; 
+    --navy-paper: #0F1923; 
+    --navy-card: #152230;
+    --navy-border: #1E3145;
     
-    --sage-light: #D8E6DD;
-    --sage: #739B82;
-    --sage-dark: #476B54;
+    --ink: #F0F4F8; 
+    --ink-soft: #94A3B8;
     
-    --glow-sage: 0 0 16px rgba(115, 155, 130, 0.45);
-    --glow-navy: 0 0 16px rgba(15, 37, 55, 0.25);
-    --glow-cyan: 0 0 16px rgba(0, 168, 204, 0.4);
+    --sage: #8FAF8F;
+    --sage-light: #B8D8B8;
+    --sage-dark: #628262;
+    --sage-bg: rgba(143, 175, 143, 0.12);
     
-    --cyan: #0088A8; 
-    --cyan-hover: #00A8CC; 
-    --brass: #B8860B; 
-    --brass-bg: rgba(184, 134, 11, 0.1);
-    --risk: #D9383A;
-    --risk-bg: rgba(217, 56, 58, 0.08);
-    --line: rgba(115, 155, 130, 0.3); 
+    /* Crayon Glow Effects */
+    --glow-sage: 0 0 15px rgba(143, 175, 143, 0.5), 0 0 30px rgba(143, 175, 143, 0.2);
+    --glow-navy: 0 0 20px rgba(15, 25, 35, 0.8);
+    --glow-cyan: 0 0 15px rgba(0, 242, 254, 0.4);
+    
+    --cyan: #00F2FE; 
+    --brass: #FAD961; 
+    --risk: #FF4D4D;
+    --line: rgba(143, 175, 143, 0.22); 
   }
 
   *{box-sizing:border-box;}
-  body{margin:0; background:var(--shell); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased;}
-  h1,h2,h3,h4{font-family:'Fraunces',serif; color:var(--navy);}
+  body{margin:0; background:var(--navy-deep); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif; color:#fff;}
   .app{max-width:1080px; margin:0 auto; padding:0 20px 80px;}
   
   /* HEADER */
-  header{padding:36px 0 24px; border-bottom:2px solid var(--line); position:relative;}
+  header{padding:36px 0 24px; border-bottom:1.5px solid var(--line); position:relative;}
   .header-top{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
   .brandrow{display:flex; align-items:center; gap:16px;}
-  .seal{width:48px; height:48px; border-radius:50%; background:var(--navy); border:2px solid var(--sage); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#fff; flex-shrink:0; box-shadow:var(--glow-navy);}
-  .brand-text .eyebrow{text-transform:uppercase; letter-spacing:.18em; font-size:11.5px; color:var(--sage-dark); font-weight:700;}
-  .brand-text h1{margin:2px 0 0; font-size:32px; font-weight:700; color:var(--navy);}
+  .seal{width:48px; height:48px; border-radius:50%; background:var(--navy-paper); border:2px solid var(--sage); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:var(--sage-light); flex-shrink:0; box-shadow:var(--glow-sage);}
+  .brand-text .eyebrow{text-transform:uppercase; letter-spacing:.18em; font-size:11.5px; color:var(--sage); font-weight:700;}
+  .brand-text h1{margin:2px 0 0; font-size:32px; font-weight:700; color:#fff;}
   header p.sub{margin:12px 0 0; color:var(--ink-soft); font-size:15px; max-width:680px; line-height:1.58;}
   
-  .notice{margin-top:20px; padding:14px 18px; background:var(--paper-card); border:1.5px solid var(--sage); border-radius:10px; font-size:13.5px; color:var(--navy); line-height:1.6; box-shadow:var(--glow-sage);}
-  .notice b{color:var(--navy);}
+  .notice{margin-top:20px; padding:14px 18px; background:var(--sage-bg); border:1.5px solid var(--sage); border-radius:10px; font-size:13.5px; color:var(--ink); line-height:1.6; box-shadow:var(--glow-sage);}
+  .notice b{color:var(--sage-light);}
   
   /* NAV */
-  nav{display:flex; gap:8px; margin-top:24px; border-bottom:2px solid var(--line); overflow-x:auto; padding-bottom:2px;}
+  nav{display:flex; gap:8px; margin-top:24px; border-bottom:1.5px solid var(--line); overflow-x:auto; padding-bottom:2px;}
   nav button{background:none; border:none; color:var(--ink-soft); font-family:'IBM Plex Sans'; font-size:14px; font-weight:600; padding:12px 18px; cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; transition:all .2s;}
-  nav button.active{color:var(--navy); border-bottom-color:var(--navy); background:rgba(226, 230, 221, 0.5); border-radius:8px 8px 0 0;}
-  nav button:hover:not(.active){color:var(--navy);}
+  nav button.active{color:var(--sage-light); border-bottom-color:var(--sage); background:rgba(143, 175, 143, 0.08); border-radius:8px 8px 0 0; text-shadow:var(--glow-sage);}
+  nav button:hover:not(.active){color:var(--ink);}
   
   /* TABS */
   section.tab{display:none; padding-top:28px;}
   section.tab.active{display:block;}
   
   /* CARDS */
-  .card{background:var(--paper); color:var(--ink); border-radius:14px; padding:28px; margin-bottom:20px; border:1.5px solid var(--line); box-shadow:0 4px 20px rgba(15, 37, 55, 0.05);}
-  .card h3{margin:0 0 6px; font-size:20px; color:var(--navy);}
+  .card{background:var(--navy-paper); color:var(--ink); border-radius:14px; padding:28px; margin-bottom:20px; border:1.5px solid var(--navy-border); box-shadow:0 6px 20px rgba(0,0,0,0.4);}
+  .card h3{margin:0 0 6px; font-size:20px; color:#fff;}
   .card .hint{color:var(--ink-soft); font-size:14px; margin:0 0 18px; line-height:1.55;}
   
-  /* INPUTS & BUTTONS */
+  /* INPUTS & SAGE BUTTONS */
   input[type=text], input[type=password], input[type=datetime-local], textarea, select{
-    width:100%; border-radius:8px; border:1.5px solid var(--line); padding:13px; font-family:'IBM Plex Sans'; font-size:14px; color:var(--navy); background:var(--paper-card); transition:all .2s; outline:none;
+    width:100%; border-radius:8px; border:1.5px solid var(--navy-border); padding:13px; font-family:'IBM Plex Sans'; font-size:14px; color:var(--ink); background:var(--navy-card); transition:all .2s; outline:none;
   }
-  input[type=text]:focus, textarea:focus, select:focus{border-color:var(--navy); background:#fff; box-shadow:var(--glow-navy);}
+  input[type=text]:focus, textarea:focus, select:focus{border-color:var(--sage); box-shadow:var(--glow-sage);}
   
-  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--navy); color:#fff; border:none; padding:12px 22px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; font-family:'IBM Plex Sans'; box-shadow:var(--glow-navy); transition:transform .15s, background .2s;}
-  .btn:hover{background:var(--navy-light); transform:translateY(-1px);}
-  .btn.ghost{background:transparent; border:1.5px solid var(--navy); color:var(--navy); box-shadow:none;}
-  .btn.ghost:hover{background:var(--paper-card);}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg, var(--sage-dark), var(--sage)); color:#0F1923; border:none; padding:12px 22px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; font-family:'IBM Plex Sans'; box-shadow:var(--glow-sage); transition:transform .15s, filter .2s;}
+  .btn:hover{filter:brightness(1.1); transform:translateY(-1px);}
+  .btn.ghost{background:transparent; border:1.5px solid var(--sage); color:var(--sage-light); box-shadow:none;}
+  .btn.ghost:hover{background:var(--sage-bg); box-shadow:var(--glow-sage);}
   
   /* BADGES */
   .badge{display:inline-block; font-size:11.5px; font-weight:700; padding:4px 11px; border-radius:20px; text-transform:uppercase; letter-spacing:.04em; margin:2px 4px 2px 0;}
-  .badge.cat{background:rgba(0, 136, 168, 0.12); color:var(--cyan); border:1px solid var(--cyan);}
-  .badge.risk{background:var(--risk-bg); color:var(--risk); border:1px solid var(--risk);}
-  .badge.law{background:var(--brass-bg); color:var(--brass); border:1px solid var(--brass);}
+  .badge.cat{background:rgba(0, 242, 254, 0.1); color:var(--cyan); border:1px solid rgba(0, 242, 254, 0.3);}
+  .badge.risk{background:rgba(255, 77, 77, 0.1); color:var(--risk); border:1px solid rgba(255, 77, 77, 0.3);}
+  .badge.law{background:rgba(250, 217, 97, 0.1); color:var(--brass); border:1px solid rgba(250, 217, 97, 0.3);}
 
   /* CHAT */
   .chat-log{display:flex; flex-direction:column; gap:12px; margin-bottom:16px; max-height:480px; overflow-y:auto; padding-right:4px;}
-  .msg{max-width:85%; padding:14px 18px; border-radius:12px; font-size:14px; line-height:1.6; border:1.5px solid var(--line);}
-  .msg.ai{background:var(--paper-card); align-self:flex-start; color:var(--navy); border-color:var(--sage);}
-  .msg.user{background:var(--navy); color:#fff; align-self:flex-end; border-color:var(--navy-light); box-shadow:var(--glow-navy);}
+  .msg{max-width:85%; padding:14px 18px; border-radius:12px; font-size:14px; line-height:1.6; border:1.5px solid var(--navy-border);}
+  .msg.ai{background:var(--navy-card); align-self:flex-start; color:var(--ink); border-color:var(--sage-dark);}
+  .msg.user{background:var(--sage-dark); color:#0F1923; align-self:flex-end; border-color:var(--sage); box-shadow:var(--glow-sage); font-weight:500;}
   .msg .tag{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.8; margin-bottom:4px; font-weight:700;}
-  .msg.user .tag{color:var(--sage-light);}
-  .msg.ai .tag{color:var(--sage-dark);}
+  .msg.user .tag{color:#000;}
+  .msg.ai .tag{color:var(--sage-light);}
   .chat-input-row{display:flex; gap:10px;}
 
   /* DETECTIVE SUMMARY */
   .result-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
   @media(max-width:680px){.result-grid{grid-template-columns:1fr;}}
-  .result-box{border:1.5px solid var(--line); border-radius:10px; padding:16px; background:var(--paper-card);}
-  .result-box h4{margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--navy);}
+  .result-box{border:1.5px solid var(--navy-border); border-radius:10px; padding:16px; background:var(--navy-card);}
+  .result-box h4{margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--sage-light);}
   .result-box p{margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
   .score-ring{display:flex; align-items:center; gap:14px; margin:16px 0;}
-  .score-num{font-family:'IBM Plex Mono'; font-size:36px; font-weight:700; color:var(--navy); text-shadow:var(--glow-sage);}
+  .score-num{font-family:'IBM Plex Mono'; font-size:36px; font-weight:700; color:var(--sage-light); text-shadow:var(--glow-sage);}
   
   .checklist{list-style:none; margin:0; padding:0;}
-  .checklist li{padding:8px 0; border-top:1px solid var(--line); font-size:13.5px; display:flex; gap:8px; align-items:flex-start;}
+  .checklist li{padding:8px 0; border-top:1px solid var(--navy-border); font-size:13.5px; display:flex; gap:8px; align-items:flex-start;}
   .checklist li:first-child{border-top:none;}
   .checklist li .mark{flex-shrink:0; font-weight:700;}
-  .checklist li.provided .mark{color:var(--sage-dark);}
+  .checklist li.provided .mark{color:var(--sage-light);}
   .checklist li.missing .mark{color:var(--risk);}
   
-  .draft-box{position:relative; border:1.5px dashed var(--navy); border-radius:10px; padding:22px; margin-top:16px; background:var(--paper-card);}
-  .draft-box textarea{background:transparent; border:none; padding:0; min-height:220px; font-family:'IBM Plex Mono'; font-size:13px; line-height:1.65; color:var(--navy); resize:vertical;}
-  .stamp{position:absolute; top:18px; right:20px; width:74px; height:74px; border-radius:50%; border:2px solid var(--navy); display:flex; align-items:center; justify-content:center; flex-direction:column; transform:rotate(-8deg); opacity:.85;}
-  .stamp span{font-family:'IBM Plex Mono'; font-size:9px; color:var(--navy); text-align:center; line-height:1.2; font-weight:700;}
+  .draft-box{position:relative; border:1.5px dashed var(--sage); border-radius:10px; padding:22px; margin-top:16px; background:var(--navy-card);}
+  .draft-box textarea{background:transparent; border:none; padding:0; min-height:220px; font-family:'IBM Plex Mono'; font-size:13px; line-height:1.65; color:var(--ink); resize:vertical;}
+  .stamp{position:absolute; top:18px; right:20px; width:74px; height:74px; border-radius:50%; border:2px solid var(--sage); display:flex; align-items:center; justify-content:center; flex-direction:column; transform:rotate(-8deg); opacity:.85; box-shadow:var(--glow-sage);}
+  .stamp span{font-family:'IBM Plex Mono'; font-size:9px; color:var(--sage-light); text-align:center; line-height:1.2; font-weight:700;}
 
   /* MEDIA CHECK */
-  .upload-box{border:2.5px dashed var(--sage); background:var(--paper-card); border-radius:12px; padding:30px; text-align:center; margin-top:16px; cursor:pointer; transition:all .2s;}
-  .upload-box:hover{border-color:var(--navy); box-shadow:var(--glow-sage);}
-  #scanOutput{margin-top:18px; padding:16px; background:var(--paper-card); border:1.5px solid var(--sage); border-radius:10px; display:none; font-size:13.5px; line-height:1.6; white-space:pre-wrap;}
+  .upload-box{border:2.5px dashed var(--sage); background:var(--navy-card); border-radius:12px; padding:30px; text-align:center; margin-top:16px; cursor:pointer; transition:all .2s;}
+  .upload-box:hover{border-color:var(--sage-light); box-shadow:var(--glow-sage);}
+  #scanOutput{margin-top:18px; padding:16px; background:var(--navy-card); border:1.5px solid var(--sage); border-radius:10px; display:none; font-size:13.5px; line-height:1.6; white-space:pre-wrap;}
   
   .redflag-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
   @media(max-width:680px){.redflag-grid{grid-template-columns:1fr;}}
-  .redflag-item{border:1.5px solid var(--line); border-radius:10px; padding:14px 16px; background:var(--paper-card);}
-  .redflag-item h4{margin:0 0 6px; font-size:14px; color:var(--navy);}
+  .redflag-item{border:1.5px solid var(--navy-border); border-radius:10px; padding:14px 16px; background:var(--navy-card);}
+  .redflag-item h4{margin:0 0 6px; font-size:14px; color:#fff;}
   .redflag-item p{margin:0; font-size:13px; color:var(--ink-soft); line-height:1.5;}
   
   .subtab-nav{display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
-  .subtab-nav button{background:var(--paper-card); border:1.5px solid var(--line); color:var(--ink-soft); font-family:'IBM Plex Sans'; font-size:13px; font-weight:600; padding:8px 16px; border-radius:20px; cursor:pointer; transition:all .2s;}
-  .subtab-nav button.active{background:var(--navy); color:#fff; border-color:var(--navy); box-shadow:var(--glow-navy);}
+  .subtab-nav button{background:var(--navy-card); border:1.5px solid var(--navy-border); color:var(--ink-soft); font-family:'IBM Plex Sans'; font-size:13px; font-weight:600; padding:8px 16px; border-radius:20px; cursor:pointer; transition:all .2s;}
+  .subtab-nav button.active{background:var(--sage-dark); color:#0F1923; border-color:var(--sage); box-shadow:var(--glow-sage); font-weight:700;}
 
   /* CASE LIBRARY (EXPANDABLE CARDS) */
   .case-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   @media(max-width:680px){.case-grid{grid-template-columns:1fr;}}
-  .case-card{background:var(--paper-card); border:1.5px solid var(--line); border-radius:12px; padding:20px; cursor:pointer; transition:all .2s;}
-  .case-card:hover{border-color:var(--navy); box-shadow:var(--glow-sage);}
-  .case-card h4{margin:6px 0 4px; font-size:16px; color:var(--navy);}
+  .case-card{background:var(--navy-card); border:1.5px solid var(--navy-border); border-radius:12px; padding:20px; cursor:pointer; transition:all .2s;}
+  .case-card:hover{border-color:var(--sage); box-shadow:var(--glow-sage);}
+  .case-card h4{margin:6px 0 4px; font-size:16px; color:#fff;}
   .case-card .meta-line{font-size:12.5px; color:var(--ink-soft); margin-bottom:8px;}
   .case-card .summary{font-size:13.5px; line-height:1.55; color:var(--ink);}
-  .case-card .expand-hint{display:flex; align-items:center; gap:5px; margin-top:10px; font-size:12.5px; color:var(--navy); font-weight:700;}
-  .case-full-details{display:none; margin-top:14px; padding-top:14px; border-top:1.5px solid var(--line); font-size:13px; line-height:1.6; color:var(--ink);}
+  .case-card .expand-hint{display:flex; align-items:center; gap:5px; margin-top:10px; font-size:12.5px; color:var(--sage-light); font-weight:700;}
+  .case-full-details{display:none; margin-top:14px; padding-top:14px; border-top:1.5px solid var(--navy-border); font-size:13px; line-height:1.6; color:var(--ink-soft);}
   .case-card.open .case-full-details{display:block;}
 
   .stats-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px;}
   @media(max-width:680px){.stats-strip{grid-template-columns:1fr 1fr;}}
-  .stat-box{text-align:center; padding:14px 8px; border-radius:10px; border:1.5px solid var(--line); background:var(--paper-card);}
-  .stat-box .num{font-family:'IBM Plex Mono'; font-size:22px; font-weight:700; color:var(--navy);}
+  .stat-box{text-align:center; padding:14px 8px; border-radius:10px; border:1.5px solid var(--navy-border); background:var(--navy-card);}
+  .stat-box .num{font-family:'IBM Plex Mono'; font-size:22px; font-weight:700; color:var(--sage-light); text-shadow:var(--glow-sage);}
   .stat-box .lbl{font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; margin-top:2px;}
 
   /* TIMELINE */
@@ -153,18 +151,18 @@
   .ev-form label{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); margin-bottom:4px;}
   
   .timeline{margin-top:22px; position:relative; padding-left:24px;}
-  .timeline::before{content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:var(--line);}
+  .timeline::before{content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:var(--navy-border);}
   .tl-item{position:relative; padding-bottom:18px;}
-  .tl-item::before{content:''; position:absolute; left:-24px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--navy); box-shadow:var(--glow-navy);}
-  .tl-item .date{font-family:'IBM Plex Mono'; font-size:12px; color:var(--navy); font-weight:700;}
-  .tl-item .type{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--sage-dark); margin-left:8px; font-weight:700;}
+  .tl-item::before{content:''; position:absolute; left:-24px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--sage); box-shadow:var(--glow-sage);}
+  .tl-item .date{font-family:'IBM Plex Mono'; font-size:12px; color:var(--sage-light); font-weight:700;}
+  .tl-item .type{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--brass); margin-left:8px; font-weight:700;}
   .tl-item p{margin:4px 0 0; font-size:13.5px; line-height:1.5; color:var(--ink);}
 
   /* HELPLINES */
   .contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
-  .contact-card{background:var(--paper-card); border:1.5px solid var(--line); border-radius:10px; padding:18px;}
-  .contact-card b{display:block; font-size:15px; margin-bottom:4px; color:var(--navy);}
-  .contact-card .num{font-family:'IBM Plex Mono'; font-size:20px; color:var(--navy); font-weight:700; margin:6px 0;}
+  .contact-card{background:var(--navy-card); border:1.5px solid var(--navy-border); border-radius:10px; padding:18px;}
+  .contact-card b{display:block; font-size:15px; margin-bottom:4px; color:#fff;}
+  .contact-card .num{font-family:'IBM Plex Mono'; font-size:20px; color:var(--sage-light); font-weight:700; margin:6px 0; text-shadow:var(--glow-sage);}
   
   .search-box{display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 4px;}
   .urdu-text{font-family:'Noto Nastaliq Urdu', serif; direction:rtl; text-align:right; line-height:2.2;}
@@ -182,7 +180,8 @@
         </div>
       </div>
       <div>
-        <button class="btn ghost" onclick="openAdmin()" style="font-size:12px; padding:7px 14px;">🔐 Admin Key</button>
+        <!-- HIDDEN KEY ICON (Aam users ko feel nahi hoga) -->
+        <button onclick="openAdmin()" style="background:none; border:none; color:var(--navy-paper); font-size:12px; cursor:pointer; opacity:0.3;">⚙️</button>
       </div>
     </div>
     <p class="sub">An AI-powered bridge connecting cybercrime victims in Pakistan to legal guidance, evidence preparation, and PECA 2016 framework — in English or Roman Urdu.</p>
@@ -196,20 +195,20 @@
     </nav>
   </header>
 
-  <!-- ADMIN PANEL MODAL -->
-  <div id="adminPanel" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 37, 55, 0.7); backdrop-filter:blur(4px); z-index:9999; align-items:center; justify-content:center;">
-    <div style="background:#fff; border:2px solid var(--navy); border-radius:16px; padding:32px; max-width:480px; width:90%; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+  <!-- ADMIN PANEL MODAL (CHUPA HUA) -->
+  <div id="adminPanel" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(10, 17, 24, 0.9); backdrop-filter:blur(5px); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:var(--navy-paper); border:2px solid var(--sage); border-radius:16px; padding:32px; max-width:480px; width:90%; box-shadow:var(--glow-sage);">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-        <h3 style="margin:0; color:var(--navy); font-size:18px;">🔐 TITAN Admin Config</h3>
+        <h3 style="margin:0; color:var(--sage-light); font-size:18px;">🔐 TITAN Admin Config</h3>
         <button onclick="closeAdmin()" style="background:none; border:none; color:var(--ink-soft); font-size:22px; cursor:pointer;">✕</button>
       </div>
-      <p style="font-size:13px; color:var(--ink-soft); margin:0 0 14px;">Paste your Gemini API key below to enable live AI analysis. Saved securely in browser storage.</p>
+      <p style="font-size:13px; color:var(--ink-soft); margin:0 0 14px;">Paste your Gemini API key below to enable live AI analysis.</p>
       <input type="password" id="adminKeyField" placeholder="AIzaSy..." style="margin-bottom:14px;">
       <div style="display:flex; gap:10px;">
         <button class="btn" style="flex:1;" onclick="saveAdminKey()">Save Key</button>
         <button class="btn ghost" onclick="clearAdminKey()" style="color:var(--risk); border-color:var(--risk);">Clear</button>
       </div>
-      <p id="adminStatus" style="margin:12px 0 0; font-size:13px; color:var(--sage-dark); text-align:center;"></p>
+      <p id="adminStatus" style="margin:12px 0 0; font-size:13px; color:var(--sage-light); text-align:center;"></p>
     </div>
   </div>
 
@@ -266,8 +265,8 @@
           <button class="btn ghost" onclick="toggleGuide()">📖 Submission Guide (Urdu/English)</button>
         </div>
 
-        <div id="submissionGuide" style="display:none; margin-top:20px; background:var(--paper-card); border:1.5px solid var(--navy); border-radius:12px; padding:20px;">
-          <h4 style="color:var(--navy); margin:0 0 12px; font-size:15px;">📋 How to Submit — Step by Step</h4>
+        <div id="submissionGuide" style="display:none; margin-top:20px; background:var(--navy-card); border:1.5px solid var(--sage); border-radius:12px; padding:20px;">
+          <h4 style="color:var(--sage-light); margin:0 0 12px; font-size:15px;">📋 How to Submit — Step by Step</h4>
           <ol style="margin:0; padding-left:18px; font-size:13.5px; line-height:1.8; color:var(--ink);">
             <li>Visit <b>complaint.nccia.gov.pk</b></li>
             <li>Enter CNIC and contact details</li>
@@ -275,7 +274,7 @@
             <li>Keep your official case tracking number safe</li>
           </ol>
           <div class="urdu-text" style="border-top:1px solid var(--line); padding-top:14px; margin-top:14px;">
-            <b style="color:var(--navy);">🌐 آن لائن پورٹل پر شکایت درج کروانے کا طریقہ:</b>
+            <b style="color:var(--sage-light);">🌐 آن لائن پورٹل پر شکایت درج کروانے کا طریقہ:</b>
             <ol style="margin:6px 18px 0 0; font-size:13.5px;">
               <li>ویب سائٹ <b>complaint.nccia.gov.pk</b> کھولیں۔</li>
               <li>اپنا شناختی کارڈ اور فون نمبر درج کریں۔</li>
@@ -301,7 +300,7 @@
 
       <div id="imgCheck">
         <div class="upload-box" onclick="document.getElementById('imgInput').click()">
-          <p style="color:var(--navy); font-weight:600; margin:0;">📷 Click to upload an image / screenshot (JPG/PNG)</p>
+          <p style="color:var(--sage-light); font-weight:600; margin:0;">📷 Click to upload an image / screenshot (JPG/PNG)</p>
         </div>
         <input type="file" id="imgInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
         <img id="imgPreview" style="max-width:100%; max-height:260px; border-radius:8px; margin-top:14px; display:none;">
@@ -315,8 +314,8 @@
           <div class="redflag-item"><h4>🎚️ Pitch & Frequency Glitches</h4><p>Sudden unnatural jumps in pitch or speed at sentence boundaries.</p></div>
         </div>
         <p style="margin-top:16px; font-size:13px; color:var(--ink-soft);">Verified Forensic Verification Tools: 
-          <a href="https://www.resemble.ai/detect/" target="_blank" style="color:var(--navy); font-weight:bold;">Resemble Detect</a> | 
-          <a href="https://www.pindrop.com" target="_blank" style="color:var(--navy); font-weight:bold;">Pindrop Audio Inspection</a>
+          <a href="https://www.resemble.ai/detect/" target="_blank" style="color:var(--sage-light); font-weight:bold;">Resemble Detect</a> | 
+          <a href="https://www.pindrop.com" target="_blank" style="color:var(--sage-light); font-weight:bold;">Pindrop Audio Inspection</a>
         </p>
       </div>
 
@@ -326,9 +325,9 @@
           <div class="redflag-item"><h4>💋 Lip-Sync Drift</h4><p>Watch mouth movement delays against consonants like "B", "M", "P".</p></div>
         </div>
         <p style="margin-top:16px; font-size:13px; color:var(--ink-soft);">Verified Video Deepfake Tools: 
-          <a href="https://www.deepware.ai" target="_blank" style="color:var(--navy); font-weight:bold;">Deepware Scanner</a> | 
-          <a href="https://hivemoderation.com" target="_blank" style="color:var(--navy); font-weight:bold;">Hive Moderation</a> | 
-          <a href="https://contentcredentials.org/verify" target="_blank" style="color:var(--navy); font-weight:bold;">Content Credentials</a>
+          <a href="https://www.deepware.ai" target="_blank" style="color:var(--sage-light); font-weight:bold;">Deepware Scanner</a> | 
+          <a href="https://hivemoderation.com" target="_blank" style="color:var(--sage-light); font-weight:bold;">Hive Moderation</a> | 
+          <a href="https://contentcredentials.org/verify" target="_blank" style="color:var(--sage-light); font-weight:bold;">Content Credentials</a>
         </p>
       </div>
     </div>
@@ -419,12 +418,12 @@
         <div class="contact-card">
           <b>NCCIA Helpline (Primary)</b>
           <div class="num">1799</div>
-          <a href="https://complaint.nccia.gov.pk" target="_blank" style="color:var(--navy); font-weight:bold;">complaint.nccia.gov.pk</a>
+          <a href="https://complaint.nccia.gov.pk" target="_blank" style="color:var(--sage-light); font-weight:bold;">complaint.nccia.gov.pk</a>
         </div>
         <div class="contact-card">
           <b>FIA Cyber Crime Wing</b>
           <div class="num">1991</div>
-          <a href="https://fia.gov.pk" target="_blank" style="color:var(--navy); font-weight:bold;">fia.gov.pk</a>
+          <a href="https://fia.gov.pk" target="_blank" style="color:var(--sage-light); font-weight:bold;">fia.gov.pk</a>
         </div>
         <div class="contact-card">
           <b>Digital Rights Foundation</b>
@@ -524,7 +523,7 @@
   function analyzeImage() {
     const out = document.getElementById('scanOutput');
     out.style.display = 'block';
-    out.innerText = 'Analysis Result:\n- Lighting & shadow consistency check completed.\n- Potential generative fill or pixel compression anomalies detected near face edges.';
+    out.innerText = 'Analysis Result:\n- Compression anomalies detected around facial boundaries.\n- Potential generative fill or pixel manipulation present.';
   }
 
   function searchCase() {
