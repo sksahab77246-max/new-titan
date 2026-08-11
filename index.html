@@ -14,10 +14,8 @@
   --border:rgba(143,175,143,0.16); --amber:#F59E0B; --risk:#EF4444; --success:#6FB98F;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
-body {
-  background: radial-gradient(circle at center, #111D33 0%, #060913 100%) !important;
-  background-attachment: fixed !important;
-}
+body{background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh;}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;}
 
 /* LAYOUT */
 .layout{display:flex; min-height:100vh;}
