@@ -6,9 +6,7 @@
 <title>TITAN — AI Cyber Guardian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#e8efe9; --bg2:#050816; --navy:#0d1b2a; --card:#0d1b2a;
+<style> --bg:#e8efe9; --bg2:#050816; --navy:#0d1b2a; --card:#0d1b2a;
   --sage:#24385B; --sage-l:#24385B; --sage-d:#24385B; --sage-btn:#2E466E;
   --cyan:#9CB2D1; --text:#F0F4F8; --muted:#A8B4C3;
   --border:rgba(27, 42, 71, 0.2); --amber:#F59E0B; --risk:#FF6B6B; --success:#6FB98F;
@@ -239,48 +237,48 @@ section.tab.active{display:block;}
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="adminOverlay">
-  <div class="admin-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-      <h3>🔐 TITAN Admin Panel</h3>
-      <button onclick="closeAdmin()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">✕</button>
-    </div>
-    <p>Paste your Gemini API key below. It will be saved permanently in this browser. Users will not see this panel.</p>
-    <input type="password" id="adminKeyField" placeholder="Paste your API key here..." style="margin-bottom:14px;">
-    <div style="display:flex;gap:10px;">
-      <button class="btn-primary" onclick="saveAdminKey()" style="flex:1;">Save Key</button>
-      <button class="btn-ghost" onclick="clearAdminKey()">Clear</button>
-    </div>
-    <p id="adminStatus" style="margin-top:12px;font-size:13px;text-align:center;color:var(--muted);"></p>
-  </div>
+  <div class="admin-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3>🔐 TITAN Admin Panel</h3>
+      <button onclick="closeAdmin()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">✕</button>
+    </div>
+    <p>Paste your Gemini API key below. It will be saved permanently in this browser. Users will not see this panel.</p>
+    <input type="password" id="adminKeyField" placeholder="Paste your API key here..." style="margin-bottom:14px;">
+    <div style="display:flex;gap:10px;">
+      <button class="btn-primary" onclick="saveAdminKey()" style="flex:1;">Save Key</button>
+      <button class="btn-ghost" onclick="clearAdminKey()">Clear</button>
+    </div>
+    <p id="adminStatus" style="margin-top:12px;font-size:13px;text-align:center;color:var(--muted);"></p>
+  </div>
 </div>
 
 <!-- TOPBAR (mobile) -->
 <div class="topbar" id="topbar">
-  <div style="display:flex;align-items:center;gap:10px;">
-    <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text);cursor:pointer;font-size:20px;">☰</button>
-    <span style="font-family:'Poppins',sans-serif;font-weight:700;">TITAN</span>
-  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button onclick="toggleSidebar()" style="background:none;border:none;color:var(--text);cursor:pointer;font-size:20px;">☰</button>
+    <span style="font-family:'Poppins',sans-serif;font-weight:700;">TITAN</span>
+  </div>
 </div>
 <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
-  <div class="logo-row">
-    <div class="logo-icon">🛡️</div>
-    <span class="logo-text">TITAN</span>
-  </div>
-  <button class="nav-btn active" onclick="showTab('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</button>
-  <button class="nav-btn" onclick="showTab('detective',this)"><span class="nav-icon">🔍</span> AI Detective</button>
-  <button class="nav-btn" onclick="showTab('mediacheck',this)"><span class="nav-icon">🖼️</span> AI Media Check</button>
-  <button class="nav-btn" onclick="showTab('library',this)"><span class="nav-icon">📁</span> Case Library</button>
-  <button class="nav-btn" onclick="showTab('timeline',this)"><span class="nav-icon">📅</span> Evidence Timeline</button>
-  <button class="nav-btn" onclick="showTab('peca',this)"><span class="nav-icon">⚖️</span> PECA Law</button>
-  <button class="nav-btn" onclick="showTab('glossary',this)"><span class="nav-icon">📖</span> Scam Glossary</button>
-  <button class="nav-btn" onclick="showTab('resources',this)"><span class="nav-icon">📞</span> Helplines</button>
-  <div class="sidebar-footer">
-    AI outputs are educational guidance only — not forensic or legal conclusions.<br><br>
-    <span style="opacity:0.4;cursor:pointer;" onclick="openAdmin()">⚙</span>
-  </div>
+  <div class="logo-row">
+    <div class="logo-icon">🛡️</div>
+    <span class="logo-text">TITAN</span>
+  </div>
+  <button class="nav-btn active" onclick="showTab('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</button>
+  <button class="nav-btn" onclick="showTab('detective',this)"><span class="nav-icon">🔍</span> AI Detective</button>
+  <button class="nav-btn" onclick="showTab('mediacheck',this)"><span class="nav-icon">🖼️</span> AI Media Check</button>
+  <button class="nav-btn" onclick="showTab('library',this)"><span class="nav-icon">📁</span> Case Library</button>
+  <button class="nav-btn" onclick="showTab('timeline',this)"><span class="nav-icon">📅</span> Evidence Timeline</button>
+  <button class="nav-btn" onclick="showTab('peca',this)"><span class="nav-icon">⚖️</span> PECA Law</button>
+  <button class="nav-btn" onclick="showTab('glossary',this)"><span class="nav-icon">📖</span> Scam Glossary</button>
+  <button class="nav-btn" onclick="showTab('resources',this)"><span class="nav-icon">📞</span> Helplines</button>
+  <div class="sidebar-footer">
+    AI outputs are educational guidance only — not forensic or legal conclusions.<br><br>
+    <span style="opacity:0.4;cursor:pointer;" onclick="openAdmin()">⚙</span>
+  </div>
 </aside>
 
 <!-- MAIN CONTENT -->
@@ -291,144 +289,135 @@ section.tab.active{display:block;}
 
 <!-- ═══════════════ DASHBOARD ═══════════════ -->
 <section class="tab active" id="dashboard">
-  <h1 class="page-title">Welcome, Detective</h1>
-  <p class="page-sub">Monitoring your digital safety and open cases.</p>
-  <div class="stat-grid">
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(143,175,143,0.15);">🛡️</div><div class="stat-val">3</div><div class="stat-lbl">Active Cases</div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(79,182,174,0.15);">📎</div><div class="stat-val">12</div><div class="stat-lbl">Evidence Items</div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(239,68,68,0.15);">⚠️</div><div class="stat-val">High</div><div class="stat-lbl">Risk Score</div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(85,122,97,0.15);">🕐</div><div class="stat-val">2h</div><div class="stat-lbl">Last Activity</div></div>
-  </div>
-  <div class="dash-grid">
-    <div class="glass">
-      <h3 style="font-size:16px;margin-bottom:16px;">📈 Recent Evidence Timeline</h3>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--sage);"></div><div><p style="font-size:13px;">Screenshot uploaded</p><p style="font-size:11px;color:var(--muted);">Today, 10:42 AM</p></div></div>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--amber);"></div><div><p style="font-size:13px;">Voice note flagged for review</p><p style="font-size:11px;color:var(--muted);">Yesterday, 6:15 PM</p></div></div>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--success);"></div><div><p style="font-size:13px;">Case #TT-2216 opened</p><p style="font-size:11px;color:var(--muted);">2 days ago</p></div></div>
-    </div>
-    <div class="glass">
-      <h3 style="font-size:16px;margin-bottom:16px;">🚨 Threat Alerts</h3>
-      <div class="alert-row"><p style="font-size:13px;max-width:70%;">New QR code scam pattern reported nearby</p><span class="pill pill-amber">Medium</span></div>
-      <div class="alert-row"><p style="font-size:13px;max-width:70%;">Digital arrest scam calls rising this week</p><span class="pill pill-risk">High</span></div>
-    </div>
-  </div>
-  <div class="cta-box">
-    <div><h3 style="font-size:17px;margin-bottom:5px;">Have something to report?</h3><p style="font-size:13px;color:var(--muted);">Start the AI Detective and get a structured case file in minutes.</p></div>
-    <button class="btn-primary" onclick="showTab('detective',document.querySelectorAll('.nav-btn')[1])">🔍 Analyze my incident</button>
-  </div>
+  <h1 class="page-title">Welcome, Detective</h1>
+  <p class="page-sub">Monitoring your digital safety and open cases.</p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(143,175,143,0.15);">🛡️</div><div class="stat-val">3</div><div class="stat-lbl">Active Cases</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(79,182,174,0.15);">📎</div><div class="stat-val">12</div><div class="stat-lbl">Evidence Items</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(239,68,68,0.15);">⚠️</div><div class="stat-val">High</div><div class="stat-lbl">Risk Score</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(85,122,97,0.15);">🕐</div><div class="stat-val">2h</div><div class="stat-lbl">Last Activity</div></div>
+  </div>
+  <div class="dash-grid">
+    <div class="glass">
+      <h3 style="font-size:16px;margin-bottom:16px;">📈 Recent Evidence Timeline</h3>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--sage);"></div><div><p style="font-size:13px;">Screenshot uploaded</p><p style="font-size:11px;color:var(--muted);">Today, 10:42 AM</p></div></div>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--amber);"></div><div><p style="font-size:13px;">Voice note flagged for review</p><p style="font-size:11px;color:var(--muted);">Yesterday, 6:15 PM</p></div></div>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--success);"></div><div><p style="font-size:13px;">Case #TT-2216 opened</p><p style="font-size:11px;color:var(--muted);">2 days ago</p></div></div>
+    </div>
+    <div class="glass">
+      <h3 style="font-size:16px;margin-bottom:16px;">🚨 Threat Alerts</h3>
+      <div class="alert-row"><p style="font-size:13px;max-width:70%;">New QR code scam pattern reported nearby</p><span class="pill pill-amber">Medium</span></div>
+      <div class="alert-row"><p style="font-size:13px;max-width:70%;">Digital arrest scam calls rising this week</p><span class="pill pill-risk">High</span></div>
+    </div>
+  </div>
+  <div class="cta-box">
+    <div><h3 style="font-size:17px;margin-bottom:5px;">Have something to report?</h3><p style="font-size:13px;color:var(--muted);">Start the AI Detective and get a structured case file in minutes.</p></div>
+    <button class="btn-primary" onclick="showTab('detective',document.querySelectorAll('.nav-btn')[1])">🔍 Analyze my incident</button>
+  </div>
 </section>
 
 <!-- ═══════════════ AI DETECTIVE ═══════════════ -->
 <section class="tab" id="detective">
-  <h1 class="page-title">AI Detective</h1>
-  <p class="page-sub">Describe what happened in English or Roman Urdu. TITAN will investigate step by step.</p>
-  <div class="glass">
-    <h3 style="margin-bottom:6px;">TITAN AI Detective & Legal Assistant</h3>
-    <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">Not just a chatbot — a step-by-step cyber investigation assistant that maps your case to PECA 2016 and builds a complaint draft.</p>
-    <div class="chat-log" id="chatLog"></div>
-    <div class="chat-row">
-      <input type="text" id="chatInput" placeholder="Type here and press Send...">
-      <button class="btn-primary" style="margin-top:0;white-space:nowrap;" onclick="handleSend()">Send ➤</button>
-    </div>
-    <div class="cat-confirm" id="catConfirm">
-      <label>TITAN's guess may be wrong — please confirm or correct the category:</label>
-      <select id="categorySelect"></select>
-      <button class="btn-primary" style="margin-top:0;" onclick="confirmCategory()">Confirm & Continue ✓</button>
-    </div>
-    <button class="btn-ghost" onclick="resetDetective()" style="margin-top:12px;">↺ Start Over</button>
-  </div>
+  <h1 class="page-title">AI Detective</h1>
+  <p class="page-sub">Describe what happened in English or Roman Urdu. TITAN will investigate step by step.</p>
+  <div class="glass">
+    <h3 style="margin-bottom:6px;">TITAN AI Detective & Legal Assistant</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">Not just a chatbot — a step-by-step cyber investigation assistant that maps your case to PECA 2016 and builds a complaint draft.</p>
+    <div class="chat-log" id="chatLog"></div>
+    <div class="chat-row">
+      <input type="text" id="chatInput" placeholder="Type here and press Send...">
+      <button class="btn-primary" style="margin-top:0;white-space:nowrap;" onclick="handleSend()">Send ➤</button>
+    </div>
+    <div class="cat-confirm" id="catConfirm">
+      <label>TITAN's guess may be wrong — please confirm or correct the category:</label>
+      <select id="categorySelect"></select>
+      <button class="btn-primary" style="margin-top:0;" onclick="confirmCategory()">Confirm & Continue ✓</button>
+    </div>
+    <button class="btn-ghost" onclick="resetDetective()" style="margin-top:12px;">↺ Start Over</button>
+  </div>
 
-  <div id="analysisResult" style="display:none;">
-    <div class="glass glow" style="margin-top:20px;">
-      <h3 style="margin-bottom:12px;">Investigation Summary</h3>
-      <div id="badges" style="margin-bottom:12px;"></div>
-      <div class="score-ring"><div class="score-num" id="scoreNum">0%</div><div><div class="score-lbl">Scam Confidence Score</div><div id="tacticsBox" style="margin-top:6px;"></div></div></div>
-      <div id="inconsistencyBox"></div>
-      <div class="result-grid">
-        <div class="result-box"><h4>Applicable Law (PECA 2016)</h4><p id="pecaBox"></p></div>
-        <div class="result-box"><h4>Correct Jurisdiction</h4><p id="jurisdictionBox"></p></div>
-      </div>
-      <div class="result-box" style="margin-top:14px;">
-        <h4>Evidence Checklist (auto-marked from your answers)</h4>
-        <ul class="checklist" id="checklistBox"></ul>
-      </div>
-    </div>
-    <div class="glass" style="margin-top:20px;">
-      <h3 style="margin-bottom:8px;">Matched Case Files</h3>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Previously reported cases that match this pattern.</p>
-      <div id="matchesBox"></div>
-    </div>
-    <div class="glass" style="margin-top:20px;">
-      <h3 style="margin-bottom:8px;">Complaint Draft</h3>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:4px;">Generated from your investigation — ready for NCCIA submission. Report is in English for official submission. Use the guide below for submission instructions in your language.</p>
-      <div class="draft-wrap">
-        <div class="draft-stamp"><span>TITAN<br>DRAFT<br id="stampId"></span></div>
-        <textarea id="draftBox" readonly></textarea>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-        <button class="btn-ghost" onclick="copyDraft()">📋 Copy Draft</button>
-        <button class="btn-ghost" onclick="toggleGuide()" id="guideBtn">📖 How to Submit Your Report</button>
-      </div>
-      <div class="guide-wrap" id="submissionGuide">
-        <div id="guideEnglish">
-          <h4 style="color:var(--sage);margin-bottom:16px;">📋 How to Submit Your Report — Step by Step</h4>
-          <div class="guide-option"><h4>🌐 Option 1: Online Portal (Easiest)</h4><ol><li>Open <b style="color:var(--sage);">complaint.nccia.gov.pk</b></li><li>Click "File a Complaint"</li><li>Enter your name, CNIC number, and phone number</li><li>Copy the draft above and paste it in the complaint box</li><li>Upload any screenshots or evidence you have</li><li>Submit — you will receive an <b style="color:var(--sage);">official case number</b> — keep it safe</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">⏱️ Response time: Usually 24–48 hours</p></div>
-          <div class="guide-option"><h4>📞 Option 2: Helpline Call</h4><ol><li>Call <b style="color:var(--sage);">1799</b> (NCCIA helpline — free)</li><li>Say: "I want to report a cybercrime"</li><li>They will register the case and give you a complaint number</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">🕐 Monday–Saturday, 9 AM – 5 PM</p></div>
-          <div class="guide-option"><h4>🏢 Option 3: Physical Office</h4><ol><li>Visit your nearest <b style="color:var(--sage);">NCCIA / FIA office</b></li><li>Print this draft and bring it</li><li>Bring original CNIC and a photocopy</li><li>Bring printed evidence (screenshots, transaction records)</li></ol></div>
-          <div class="guide-warning"><h4>⚠️ Important — Please Read</h4><ul><li>Filing a complaint is <b>completely free</b></li><li>No real officer will <b>ask for money on WhatsApp or call</b> — that is fraud</li><li>You <b>cannot be refused</b> an FIR — it is your legal right</li><li>Report as soon as possible — <b>do not delete any evidence</b></li><li>After filing, <b>save the official case number</b> for tracking</li></ul></div>
-        </div>
-        <div id="guideUrdu" style="display:none;">
-          <h4 style="color:var(--sage);margin-bottom:16px;font-family:'IBM Plex Sans';">📋 درخواست جمع کرانے کا طریقہ</h4>
-          <div class="guide-option"><h4>🌐 طریقہ اول: آن لائن پورٹل</h4><ol><li>براہ کرم <b style="color:var(--sage);">complaint.nccia.gov.pk</b> کھولیں</li><li>"File a Complaint" پر کلک کریں</li><li>اپنا نام، شناختی کارڈ نمبر اور فون نمبر درج کریں</li><li>اوپر کی درخواست کاپی کر کے پیسٹ کریں</li><li>ثبوت اپ لوڈ کریں اور جمع کرائیں — آپ کو <b style="color:var(--sage);">سرکاری کیس نمبر</b> ملے گا</li></ol></div>
-          <div class="guide-option"><h4>📞 طریقہ دوم: ہیلپ لائن</h4><ol><li><b style="color:var(--sage);">1799</b> پر کال کریں (مفت)</li><li>بتائیں: "مجھے سائبر کرائم رپورٹ کرنا ہے"</li><li>شکایت نمبر نوٹ کر لیں</li></ol></div>
-          <div class="guide-warning"><h4>⚠️ اہم ہدایات</h4><ul><li>شکایت درج کرانا <b>بالکل مفت ہے</b></li><li>کوئی افسر <b>واٹس ایپ پر رقم نہیں مانگتا</b> — یہ فراڈ ہے</li><li>FIR سے <b>انکار نہیں کیا جا سکتا</b> — یہ آپ کا حق ہے</li><li>سرکاری کیس نمبر <b>ضرور محفوظ رکھیں</b></li></ul></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="analysisResult" style="display:none;">
+    <div class="glass glow" style="margin-top:20px;">
+      <h3 style="margin-bottom:12px;">Investigation Summary</h3>
+      <div id="badges" style="margin-bottom:12px;"></div>
+      <div class="score-ring"><div class="score-num" id="scoreNum">0%</div><div><div class="score-lbl">Scam Confidence Score</div><div id="tacticsBox" style="margin-top:6px;"></div></div></div>
+      <div id="inconsistencyBox"></div>
+      <div class="result-grid">
+        <div class="result-box"><h4>Applicable Law (PECA 2016)</h4><p id="pecaBox"></p></div>
+        <div class="result-box"><h4>Correct Jurisdiction</h4><p id="jurisdictionBox"></p></div>
+      </div>
+      <div class="result-box" style="margin-top:14px;">
+        <h4>Evidence Checklist (auto-marked from your answers)</h4>
+        <ul class="checklist" id="checklistBox"></ul>
+      </div>
+    </div>
+    <div class="glass" style="margin-top:20px;">
+      <h3 style="margin-bottom:8px;">Matched Case Files</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Previously reported cases that match this pattern.</p>
+      <div id="matchesBox"></div>
+    </div>
+    <div class="glass" style="margin-top:20px;">
+      <h3 style="margin-bottom:8px;">Complaint Draft</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:4px;">Generated from your investigation — ready for NCCIA submission. Report is in English for official submission. Use the guide below for submission instructions in your language.</p>
+      <div class="draft-wrap">
+        <div class="draft-stamp"><span>TITAN<br>DRAFT<br id="stampId"></span></div>
+        <textarea id="draftBox" readonly></textarea>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn-ghost" onclick="copyDraft()">📋 Copy Draft</button>
+        <button class="btn-ghost" onclick="toggleGuide()" id="guideBtn">📖 How to Submit Your Report</button>
+      </div>
+      <div class="guide-wrap" id="submissionGuide">
+        <div id="guideEnglish">
+          <h4 style="color:var(--sage);margin-bottom:16px;">📋 How to Submit Your Report — Step by Step</h4>
+          <div class="guide-option"><h4>🌐 Option 1: Online Portal (Easiest)</h4><ol><li>Open <b style="color:var(--sage);">complaint.nccia.gov.pk</b></li><li>Click "File a Complaint"</li><li>Enter your name, CNIC number, and phone number</li><li>Copy the draft above and paste it in the complaint box</li><li>Upload any screenshots or evidence you have</li><li>Submit — you will receive an <b style="color:var(--sage);">official case number</b> — keep it safe</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">⏱️ Response time: Usually 24–48 hours</p></div>
+          <div class="guide-option"><h4>📞 Option 2: Helpline Call</h4><ol><li>Call <b style="color:var(--sage);">1799</b> (NCCIA helpline — free)</li><li>Say: "I want to report a cybercrime"</li><li>They will register the case and give you a complaint number</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">🕐 Monday–Saturday, 9 AM – 5 PM</p></div>
+          <div class="guide-option"><h4>🏢 Option 3: Physical Office</h4><ol><li>Visit your nearest <b style="color:var(--sage);">NCCIA / FIA office</b></li><li>Print this draft and bring it</li><li>Bring original CNIC and a photocopy</li><li>Bring printed evidence (screenshots, transaction records)</li></ol></div>
+          <div class="guide-warning"><h4>⚠️ Important — Please Read</h4><ul><li>Filing a complaint is <b>completely free</b></li><li>No real officer will <b>ask for money on WhatsApp or call</b> — that is fraud</li><li>You <b>cannot be refused</b> an FIR — it is your legal right</li><li>Report as soon as possible — <b>do not delete any evidence</b></li><li>After filing, <b>save the official case number</b> for tracking</li></ul></div>
+        </div>
+        <div id="guideUrdu" style="display:none;">
+          <h4 style="color:var(--sage);margin-bottom:16px;font-family:'IBM Plex Sans';">📋 درخواست جمع کرانے کا طریقہ</h4>
+          <div class="guide-option"><h4>🌐 طریقہ اول: آن لائن پورٹل</h4><ol><li>براہ کرم <b style="color:var(--sage);">complaint.nccia.gov.pk</b> کھولیں</li><li>"File a Complaint" پر کلک کریں</li><li>اپنا نام، شناختی کارڈ نمبر اور فون نمبر درج کریں</li><li>اوپر کی درخواست کاپی کر کے پیسٹ کریں</li><li>ثبوت اپ لوڈ کریں اور جمع کرائیں — آپ کو <b style="color:var(--sage);">سرکاری کیس نمبر</b> ملے گا</li></ol></div>
+          <div class="guide-option"><h4>📞 طریقہ دوم: ہیلپ لائن</h4><ol><li><b style="color:var(--sage);">1799</b> پر کال کریں (مفت)</li><li>بتائیں: "مجھے سائبر کرائم رپورٹ کرنا ہے"</li><li>شکایت نمبر نوٹ کر لیں</li></ol></div>
+          <div class="guide-warning"><h4>⚠️ اہم ہدایات</h4><ul><li>شکایت درج کرانا <b>بالکل مفت ہے</b></li><li>کوئی افسر <b>واٹس ایپ پر رقم نہیں مانگتا</b> — یہ فراڈ ہے</li><li>FIR سے <b>انکار نہیں کیا جا سکتا</b> — یہ آپ کا حق ہے</li><li>سرکاری کیس نمبر <b>ضرور محفوظ رکھیں</b></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════ AI MEDIA CHECK ═══════════════ -->
 <section class="tab" id="mediacheck">
-  <h1 class="page-title">AI Media Check</h1>
-  <p class="page-sub">Analyze suspicious images, voice, or video for signs of AI generation or manipulation.</p>
-  <div class="glass">
-    <div style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:14px;font-size:13px;color:var(--risk);margin-bottom:18px;line-height:1.6;"><b>Important:</b> This gives an indicative assessment only — not forensic-grade proof. For legal evidence, request verification through NCCIA's digital forensics lab.</div>
-    <div class="subtab-nav">
-      <button class="subtab-btn active" onclick="showSubtab('imgCheck',this)">🖼️ Image</button>
-      <button class="subtab-btn" onclick="showSubtab('voiceCheck',this)">🔊 Voice / Audio</button>
-      <button class="subtab-btn" onclick="showSubtab('videoCheck',this)">🎥 Video</button>
-    </div>
-    <div id="imgCheck">
-      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Upload a suspicious image — Gemini Vision will inspect it for signs of AI-generation or manipulation.</p>
-      <div class="upload-box" onclick="document.getElementById('imgInput').click()"><div style="font-size:32px;margin-bottom:8px;">📷</div><p style="color:var(--muted);font-size:14px;">Click to upload an image (JPG/PNG)</p></div>
-      <input type="file" id="imgInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
-      <img id="imgPreview" style="max-width:100%;max-height:260px;border-radius:10px;margin-top:14px;display:none;">
-      <button class="btn-primary" id="analyzeImgBtn" style="display:none;margin-top:14px;" onclick="analyzeImage()">✨ Analyze Image with Gemini</button>
-      <div class="scan-out" id="scanOutput"></div>
-    </div>
-    <div id="voiceCheck" style="display:none;">
-      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Reliable browser-based voice-clone detection needs specialized models TITAN doesn't carry. Use these red flags instead.</p>
-      <div class="redflag-grid">
-        <div class="redflag-item"><h4>🔊 Flat or robotic tone</h4><p>Cloned voices lack natural breathing pauses, micro-hesitations, or emotional variation.</p></div>
-        <div class="redflag-item"><h4>🎚️ Pitch/pacing glitches</h4><p>Sudden unnatural jumps in pitch or speed, especially at word boundaries.</p></div>
-        <div class="redflag-item"><h4>🌐 Background mismatch</h4><p>Cloned audio often has unnaturally clean or inconsistent background noise.</p></div>
-        <div class="redflag-item"><h4>⏱️ Scripted urgency</h4><p>Voice scams rely on panic to stop you noticing audio flaws — slow down before reacting.</p></div>
-      </div>
-      <p style="margin-top:14px;font-size:13px;color:var(--muted);">Verified tools: <a href="https://www.resemble.ai/detect/" target="_blank" style="color:var(--sage);">Resemble Detect</a>, <a href="https://www.pindrop.com" target="_blank" style="color:var(--sage);">Pindrop</a></p>
-    </div>
-    <div id="videoCheck" style="display:none;">
-      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Real-time deepfake video detection needs frame-by-frame ML models. Use this checklist and escalate to NCCIA forensics for legal evidence.</p>
-      <div class="redflag-grid">
-        <div class="redflag-item"><h4>👁️ Unnatural blinking</h4><p>Metronomic blinking that looks too regular or too rare.</p></div>
-        <div class="redflag-item"><h4>💋 Lip-sync drift</h4><p>Watch mouth shapes against audio on consonants like "B," "M," "P."</p></div>
-        <div class="redflag-item"><h4>🔆 Lighting mismatch</h4><p>Soft halo edge around face/hairline, or unnatural shadow angles across facial features.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-</body>
-</html>
-<script>...</script>
+  <h1 class="page-title">AI Media Check</h1>
+  <p class="page-sub">Analyze suspicious images, voice, or video for signs of AI generation or manipulation.</p>
+  <div class="glass">
+    <div style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:14px;font-size:13px;color:var(--risk);margin-bottom:18px;line-height:1.6;"><b>Important:</b> This gives an indicative assessment only — not forensic-grade proof. For legal evidence, request verification through NCCIA's digital forensics lab.</div>
+    <div class="subtab-nav">
+      <button class="subtab-btn active" onclick="showSubtab('imgCheck',this)">🖼️ Image</button>
+      <button class="subtab-btn" onclick="showSubtab('voiceCheck',this)">🔊 Voice / Audio</button>
+      <button class="subtab-btn" onclick="showSubtab('videoCheck',this)">🎥 Video</button>
+    </div>
+    <div id="imgCheck">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Upload a suspicious image — Gemini Vision will inspect it for signs of AI-generation or manipulation.</p>
+      <div class="upload-box" onclick="document.getElementById('imgInput').click()"><div style="font-size:32px;margin-bottom:8px;">📷</div><p style="color:var(--muted);font-size:14px;">Click to upload an image (JPG/PNG)</p></div>
+      <input type="file" id="imgInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+      <img id="imgPreview" style="max-width:100%;max-height:260px;border-radius:10px;margin-top:14px;display:none;">
+      <button class="btn-primary" id="analyzeImgBtn" style="display:none;margin-top:14px;" onclick="analyzeImage()">✨ Analyze Image with Gemini</button>
+      <div class="scan-out" id="scanOutput"></div>
+    </div>
+    <div id="voiceCheck" style="display:none;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Reliable browser-based voice-clone detection needs specialized models TITAN doesn't carry. Use these red flags instead.</p>
+      <div class="redflag-grid">
+        <div class="redflag-item"><h4>🔊 Flat or robotic tone</h4><p>Cloned voices lack natural breathing pauses, micro-hesitations, or emotional variation.</p></div>
+        <div class="redflag-item"><h4>🎚️ Pitch/pacing glitches</h4><p>Sudden unnatural jumps in pitch or speed, especially at word boundaries.</p></div>
+        <div class="redflag-item"><h4>🌐 Background mismatch</h4><p>Cloned audio often has unnaturally clean or inconsistent background noise.</p></div>
+        <div class="redflag-item"><h4>⏱️ Scripted urgency</h4><p>Voice scams rely on panic to stop you noticing audio flaws — slow down before reacting.</p></div>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted);">Verified tools: <a href="https://www.resemble.ai/detect/" target="_blank" style="color:var(--sage);">Resemble Detect</a>, <a href="https://www.pindrop.com" target="_blank" style="color:var(--sage);">Pindrop</a></p>
+    </div>
+    <div id="videoCheck" style="display:none;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Real-time deepfake video detection needs frame-by-frame ML models. Use this checklist and escalate to NCCIA forensics for legal evidence.</p>
+      <div class="redflag-grid">
+        <div class="redflag-item"><h4>👁️ Unnatural blinking</h4><p>Metronomic blinking that looks too regular or too rare.</p></div>
+        <div class="redflag-item"><h4>💋 Lip-sync drift</h4><p>Watch mouth shapes against audio on consonants like "B," "M," "P."</p></div>
+        <div class="redflag-item"><h4>🔆 Lighting mismatch</h4><p>Soft halo edge around face/hairline, or sh
