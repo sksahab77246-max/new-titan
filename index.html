@@ -8,90 +8,79 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg: #e8efe9; /* Very Light Sage / Cream Background */
-  --bg2: #050816; /* Sidebar Dark Background */
-  --navy: #0d1b2a; /* Deep Navy Blue for Cards/Boxes */
-  --card: #0d1b2a;
-  --sage: #2e5b44; 
-  --sage-l: #1e3a2b; 
-  --sage-d: #14281d; 
-  --sage-btn: #204030;
-  --cyan: #38bdf8; 
-  --text: #1e293b; /* Dark text for light background readability */
-  --muted: #475569;
-  --border: rgba(13, 27, 42, 0.15); 
-  --amber: #d97706; 
-  --risk: #ef4444; 
-  --success: #10b981;
+  --bg:#e8efe9; --bg2:#050816; --navy:#0d1b2a; --card:#0d1b2a;
+  --sage:#24385B; --sage-l:#24385B; --sage-d:#24385B; --sage-btn:#2E466E;
+  --cyan:#9CB2D1; --text:#1e293b; --muted:#475569;
+  --border:rgba(27, 42, 71, 0.2); --amber:#F59E0B; --risk:#FF6B6B; --success:#6FB98F;
 }
-
 *{box-sizing:border-box; margin:0; padding:0;}
 body{background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; -webkit-font-smoothing:antialiased; min-height:100vh;}
 h1,h2,h3,h4{font-family:'Poppins',sans-serif;}
 
 /* LAYOUT */
 .layout{display:flex; min-height:100vh;}
-.sidebar{width:240px; background:var(--bg2); border-right:1px solid rgba(255,255,255,0.1); display:flex; flex-direction:column; padding:24px 16px; position:fixed; top:0; left:0; bottom:0; z-index:100; color:#fff;}
+.sidebar{width:240px; background:var(--bg2); border-right:1px solid var(--border); display:flex; flex-direction:column; padding:24px 16px; position:fixed; top:0; left:0; bottom:0; z-index:100;}
 .main{margin-left:240px; flex:1; padding:40px 36px; max-width:calc(100vw - 240px);}
 
 /* SIDEBAR */
-.logo-row{display:flex; align-items:center; gap:10px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid rgba(255,255,255,0.1);}
-.logo-icon{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,#1e3a2b,#0d1b2a); display:flex; align-items:center; justify-content:center; font-size:18px;}
+.logo-row{display:flex; align-items:center; gap:10px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--border);}
+.logo-icon{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--sage),var(--navy)); display:flex; align-items:center; justify-content:center; font-size:18px;}
 .logo-text{font-family:'Poppins',sans-serif; font-weight:700; font-size:18px; color:#ffffff;}
-.nav-btn{display:flex; align-items:center; gap:10px; width:100%; padding:10px 12px; border:none; border-radius:10px; background:transparent; color:#94a3b8; font-family:'IBM Plex Sans'; font-size:14px; font-weight:500; cursor:pointer; text-align:left; border-left:2px solid transparent; transition:all .2s; margin-bottom:4px;}
-.nav-btn:hover{color:#ffffff; background:rgba(255,255,255,0.08);}
-.nav-btn.active{color:#ffffff; background:rgba(255,255,255,0.14); border-left-color:#38bdf8;}
+.nav-btn{display:flex; align-items:center; gap:10px; width:100%; padding:10px 12px; border:none; border-radius:10px; background:transparent; color:var(--muted); font-family:'IBM Plex Sans'; font-size:14px; font-weight:500; cursor:pointer; text-align:left; border-left:2px solid transparent; transition:all .2s; margin-bottom:4px;}
+.nav-btn:hover{color:#ffffff; background:rgba(143,175,143,0.08);}
+.nav-btn.active{color:#ffffff; background:rgba(143,175,143,0.14); border-left-color:var(--sage);}
 .nav-icon{font-size:16px; width:20px; text-align:center;}
-.sidebar-footer{margin-top:auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); font-size:11px; color:#94a3b8; line-height:1.6;}
+.sidebar-footer{margin-top:auto; padding-top:20px; border-top:1px solid var(--border); font-size:11px; color:var(--muted); line-height:1.6;}
 
-/* NAVY BLUE CARDS / BOXES WITH SKY BLUE GLOW HOVER */
-.glass, .stat-card, .result-box, .peca-card, .case-card, .contact-card, .guide-option, .cta-box, .redflag-item {
+/* GLASS CARD / NAVY BOXES WITH SKY BLUE GLOW HOVER */
+.glass, .stat-card, .result-box, .peca-card, .case-card, .contact-card, .cta-box, .redflag-item {
   background: var(--navy) !important;
-  color: #f8fafc !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
   transition: all 0.3s ease-in-out;
 }
 
 /* Hover: Light Sky Blue Glow */
-.glass:hover, .stat-card:hover, .result-box:hover, .peca-card:hover, .case-card:hover, .contact-card:hover, .redflag-item:hover {
-  background: #13253e !important;
+.glass:hover, .stat-card:hover, .result-box:hover, .peca-card:hover, .case-card:hover, .contact-card:hover, .cta-box:hover, .redflag-item:hover {
   border-color: #38bdf8 !important;
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.6) !important;
   transform: translateY(-2px);
 }
 
-/* Inside Card Text Styling */
+.glass.glow{border-color:rgba(143,175,143,0.45); box-shadow:0 0 24px rgba(143,175,143,0.10);}
+
+/* Text Visibility Inside Navy Boxes */
 .glass h1, .glass h2, .glass h3, .glass h4, .glass p, .glass span,
 .stat-card .stat-val, .result-box h4, .result-box p, 
 .peca-card h3, .peca-card p, .case-card h4, .redflag-item h4 {
-  color: #f8fafc !important;
+  color: #ffffff !important;
 }
 
-.stat-card .stat-lbl, .case-card .meta-line, .result-box h4, .redflag-item p {
-  color: #94a3b8 !important;
+.stat-card .stat-lbl, .case-card .meta-line, .redflag-item p {
+  color: #A8B4C3 !important;
 }
 
 /* BUTTONS */
-.btn-primary{display:inline-flex; align-items:center; gap:8px; background:#1e3a2b; color:#ffffff; border:none; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:'IBM Plex Sans'; transition:all .2s;}
-.btn-primary:hover{background:#2a523d; transform:translateY(-2px); box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);}
+.btn-primary{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,var(--sage),var(--sage-btn)); color:#ffffff; border:none; padding:12px 22px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:'IBM Plex Sans'; transition:transform .15s;}
+.btn-primary:hover{transform:translateY(-2px);}
 .btn-primary:disabled{background:#33414F; color:#9CA3AF; cursor:not-allowed; transform:none;}
-.btn-ghost{display:inline-flex; align-items:center; gap:8px; background:var(--navy); border:1px solid #38bdf8; color:#ffffff; padding:11px 20px; border-radius:10px; font-size:14px; cursor:pointer; font-family:'IBM Plex Sans'; transition:all .2s;}
-.btn-ghost:hover{background:#13253e; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);}
+.btn-ghost{display:inline-flex; align-items:center; gap:8px; background:var(--bg2); border:1px solid var(--sage-d); color:#ffffff; padding:11px 20px; border-radius:10px; font-size:14px; cursor:pointer; font-family:'IBM Plex Sans';}
+.btn-ghost:hover{border-color:var(--sage); color:var(--sage);}
 
 /* PILL / BADGE */
 .pill{display:inline-block; font-size:11px; padding:4px 10px; border-radius:999px; font-family:'IBM Plex Mono',monospace; white-space:nowrap;}
-.pill-sage{color:#38bdf8; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.25);}
-.pill-amber{color:#f59e0b; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25);}
-.pill-risk{color:#ef4444; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.25);}
+.pill-sage{color:var(--sage); background:rgba(143,175,143,0.12); border:1px solid rgba(143,175,143,0.25);}
+.pill-amber{color:var(--amber); background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.25);}
+.pill-risk{color:var(--risk); background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.25);}
 
 /* INPUTS */
 input[type=text],input[type=date],input[type=password],textarea,select{
-  background:#09131f; border:1px solid rgba(255,255,255,0.15); border-radius:10px;
+  background:var(--navy); border:1px solid var(--border); border-radius:10px;
   padding:12px 14px; color:#ffffff; font-family:'IBM Plex Sans'; font-size:14px; width:100%;
 }
-input:focus,textarea:focus,select:focus{outline:2px solid #38bdf8; outline-offset:1px;}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--sage); outline-offset:1px;}
 textarea{resize:vertical; min-height:120px;}
 
 /* PAGE TITLE */
@@ -102,39 +91,167 @@ textarea{resize:vertical; min-height:120px;}
 section.tab{display:none;}
 section.tab.active{display:block;}
 
-/* STAT CARDS GRID */
+/* STAT CARDS */
 .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:16px; margin-bottom:28px;}
-.stat-card{padding:20px;}
+.stat-card{background:rgba(16,29,47,0.65); border:1px solid var(--border); border-radius:16px; padding:20px;}
 .stat-icon{width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; margin-bottom:14px;}
 .stat-val{font-size:22px; font-weight:700; font-family:'Poppins',sans-serif;}
+.stat-lbl{font-size:12px; color:var(--muted); margin-top:3px;}
 
-/* CHAT LOG */
+/* CHAT */
 .chat-log{display:flex; flex-direction:column; gap:12px; margin-bottom:16px; max-height:500px; overflow-y:auto; padding-right:4px;}
-.msg{max-width:85%; padding:13px 16px; border-radius:12px; font-size:14px; line-height:1.6; border:1px solid rgba(255,255,255,0.1);}
-.msg.ai{background:#09131f; align-self:flex-start;}
-.msg.user{background:#13253e; align-self:flex-end; border-color:#38bdf8;}
+.msg{max-width:85%; padding:13px 16px; border-radius:12px; font-size:14px; line-height:1.6; border:1px solid var(--border);}
+.msg.ai{background:#0D1117; align-self:flex-start; border-color:rgba(175,184,180,0.2);}
+.msg.user{background:#0B1014; align-self:flex-end; border-color:rgba(79,182,174,0.25);}
 .msg .tag{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.08em; opacity:.65; margin-bottom:5px;}
+.msg.user .tag{color:var(--cyan);}
 .chat-row{display:flex; gap:10px;}
+.chat-row input{flex:1;}
+
+/* CATEGORY CONFIRM */
+.cat-confirm{display:none; margin-top:14px; padding:16px; background:var(--navy); border:1px solid rgba(245,158,11,0.35); border-radius:10px;}
+.cat-confirm label{display:block; font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--amber); margin-bottom:8px;}
+.cat-confirm select{margin-bottom:10px;}
+
+/* RESULTS */
+.result-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
+@media(max-width:680px){.result-grid{grid-template-columns:1fr;}}
+.result-box{border:1px solid var(--border); border-radius:10px; padding:16px;}
+.result-box h4{margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted);}
+.result-box p{font-size:14px; line-height:1.55; color:#ffffff;}
+.score-ring{display:flex; align-items:center; gap:14px; margin:16px 0;}
+.score-num{font-family:'IBM Plex Mono'; font-size:34px; font-weight:600; color:var(--sage);}
+.score-lbl{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em;}
+.checklist{list-style:none;}
+.checklist li{padding:7px 0; border-top:1px solid var(--border); font-size:13.5px; display:flex; gap:8px; align-items:flex-start;}
+.checklist li:first-child{border-top:none;}
+.checklist li .mark{flex-shrink:0; font-weight:700;}
+.checklist li.provided .mark{color:var(--sage);}
+.checklist li.missing .mark{color:var(--risk);}
+.match-item{border-top:1px solid var(--border); padding:12px 0;}
+.match-item:first-child{border-top:none;}
+.match-item .mrow{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+.match-item .sim{font-family:'IBM Plex Mono'; font-size:13px; color:var(--sage); font-weight:600;}
+.match-item p{margin:4px 0 0; font-size:13px; color:var(--muted); line-height:1.5;}
+
+/* DRAFT */
+.draft-wrap{position:relative; border:1px dashed rgba(143,175,143,0.3); border-radius:10px; padding:22px; margin-top:16px; background:var(--navy);}
+.draft-stamp{position:absolute; top:18px; right:20px; width:70px; height:70px; border-radius:50%; border:2px solid var(--sage); display:flex; align-items:center; justify-content:center; flex-direction:column; transform:rotate(-8deg); opacity:.75;}
+.draft-stamp span{font-family:'IBM Plex Mono'; font-size:9px; color:var(--sage); text-align:center; line-height:1.3; font-weight:600;}
+.draft-wrap textarea{background:transparent; border:none; padding:0; min-height:200px; font-family:'IBM Plex Mono'; font-size:12.5px; line-height:1.65; color:#ffffff;}
+.draft-wrap textarea:focus{outline:none;}
+.inconsistency-box{background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:14px 16px; margin-top:14px; font-size:13.5px; color:var(--risk); line-height:1.55;}
+
+/* MEDIA */
+.upload-box{border:2px dashed var(--sage-d); background:var(--navy); border-radius:12px; padding:30px; text-align:center; cursor:pointer; transition:all .2s;}
+.upload-box:hover{border-color:var(--sage);}
+.scan-out{margin-top:20px; padding:18px; background:var(--navy); border:1px solid var(--border); border-radius:10px; display:none; font-size:14px; line-height:1.65; white-space:pre-wrap;}
+.subtab-nav{display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;}
+.subtab-btn{background:var(--card); border:1px solid var(--border); color:var(--muted); font-family:'IBM Plex Sans'; font-size:13px; font-weight:600; padding:8px 16px; border-radius:20px; cursor:pointer; transition:all .2s;}
+.subtab-btn.active{background:var(--sage); color:var(--bg2); border-color:var(--sage);}
+.redflag-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
+@media(max-width:680px){.redflag-grid{grid-template-columns:1fr;}}
+.redflag-item{border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.redflag-item h4{margin:0 0 6px; font-size:14px; color:#ffffff;}
+.redflag-item p{font-size:13px; color:var(--muted); line-height:1.55;}
+
+/* CASE LIBRARY */
+.case-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media(max-width:680px){.case-grid{grid-template-columns:1fr;}}
+.case-card{background:rgba(16,29,47,0.65); border:1px solid var(--border); border-radius:14px; padding:22px; cursor:pointer; transition:all .2s;}
+.case-card:hover{border-color:rgba(143,175,143,0.45); box-shadow:0 0 20px rgba(143,175,143,0.08);}
+.case-card h4{margin:8px 0 4px; font-size:16px;}
+.case-card .meta-line{font-size:12.5px; color:var(--muted); margin-bottom:10px;}
+.case-full{display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); font-size:13.5px; line-height:1.7;}
+.case-card.open .case-full{display:block;}
+.detail-b{margin-bottom:12px;}
+.detail-b b{color:var(--sage-l); display:block; margin-bottom:4px;}
+.stats-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px;}
+@media(max-width:680px){.stats-strip{grid-template-columns:1fr 1fr;}}
+.stat-box{text-align:center; padding:14px 8px; border-radius:10px; border:1px solid var(--border); background:var(--card);}
+.stat-box .num{font-family:'IBM Plex Mono'; font-size:22px; font-weight:600; color:var(--sage);}
+.stat-box .lbl{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-top:4px;}
+
+/* TIMELINE */
+.ev-form{display:grid; grid-template-columns:140px 160px 1fr auto; gap:10px; align-items:end;}
+@media(max-width:680px){.ev-form{grid-template-columns:1fr;}}
+.ev-form label{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:5px;}
+.timeline-wrap{margin-top:24px; position:relative; padding-left:26px;}
+.timeline-wrap::before{content:''; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:var(--border);}
+.tl-item{position:relative; padding-bottom:22px;}
+.tl-item::before{content:''; position:absolute; left:-26px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--sage);}
+.tl-item .date{font-family:'IBM Plex Mono'; font-size:12px; color:var(--sage); font-weight:600;}
+.tl-item .type{font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-left:8px;}
+.tl-item p{margin:5px 0 0; font-size:14px; line-height:1.5;}
+.tl-item .del{font-size:11.5px; color:var(--risk); cursor:pointer; margin-top:5px; display:inline-block;}
+.empty{color:var(--muted); font-size:14px; font-style:italic; padding:10px 0;}
+
+/* CONTACTS */
+.contact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+.contact-card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px;}
+.contact-card b{display:block; font-size:15px; margin-bottom:4px;}
+.contact-card .num{font-family:'IBM Plex Mono'; font-size:20px; color:var(--sage); font-weight:600; margin:8px 0;}
+.contact-card a{color:var(--cyan); font-size:13px;}
+
+/* GLOSSARY */
+.glossary-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;}
+
+/* PECA */
+.peca-card{background:rgba(16,29,47,0.65); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:14px;}
+.peca-card h3{font-size:15px; margin-bottom:12px; display:flex; align-items:center; gap:10px;}
+.peca-section{margin-bottom:12px;}
+.peca-section .lbl{font-size:11px; color:var(--sage-l); font-family:'IBM Plex Mono'; margin-bottom:4px;}
+.peca-section p,.peca-section ul{font-size:13px; color:var(--muted); line-height:1.6;}
+.peca-section ul{padding-left:16px;}
+
+/* DASHBOARD */
+.dash-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:24px;}
+.tl-dash-item{display:flex; gap:12px; padding-bottom:14px; position:relative;}
+.tl-dash-dot{width:8px; height:8px; border-radius:50%; margin-top:4px; flex-shrink:0;}
+.alert-row{display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid var(--border);}
+.alert-row:last-child{border-bottom:none;}
+.cta-box{background:rgba(16,29,47,0.65); border:1px solid var(--border); border-radius:16px; padding:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:20px;}
+
+/* SUBMISSION GUIDE */
+.guide-wrap{display:none; margin-top:22px; background:var(--navy); border:1px solid rgba(79,182,174,0.2); border-radius:12px; padding:24px;}
+.guide-option{margin-bottom:18px; padding:16px; border:1px solid var(--border); border-radius:10px;}
+.guide-option h4{color:var(--amber); font-size:14px; margin-bottom:10px;}
+.guide-option ol,.guide-option ul{padding-left:18px; font-size:13.5px; line-height:2.1; color:#ffffff;}
+.guide-warning{padding:16px; background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.25); border-radius:10px;}
+.guide-warning h4{color:var(--risk); font-size:14px; margin-bottom:10px;}
+
+/* ADMIN PANEL */
+.admin-overlay{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:9999; align-items:center; justify-content:center;}
+.admin-box{background:var(--card); border:2px solid rgba(245,158,11,0.5); border-radius:16px; padding:36px; max-width:460px; width:90%;}
+.admin-box h3{color:var(--amber); margin-bottom:8px;}
+.admin-box p{color:var(--muted); font-size:13px; margin-bottom:18px;}
 
 /* NOTICE */
 .notice{padding:15px 18px; background:rgba(13, 27, 42, 0.08); border:1px solid rgba(13, 27, 42, 0.2); border-radius:10px; font-size:14px; color:#0d1b2a; line-height:1.6; margin-bottom:24px;}
 .notice b{color:#0d1b2a;}
 
-/* MEDIA REDFLAGS */
-.redflag-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
-@media(max-width:680px){.redflag-grid{grid-template-columns:1fr;}}
-.upload-box{border:2px dashed #38bdf8; background:var(--navy); border-radius:12px; padding:30px; text-align:center; cursor:pointer; transition:all .2s; color:#ffffff;}
-
-/* DASHBOARD & RESPONSIVE */
-.dash-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin-bottom:24px;}
-.tl-dash-item{display:flex; gap:12px; padding-bottom:14px; position:relative;}
-.tl-dash-dot{width:8px; height:8px; border-radius:50%; margin-top:4px; flex-shrink:0;}
-.alert-row{display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.1);}
-
+/* MOBILE */
 @media(max-width:860px){
   .sidebar{transform:translateX(-100%); transition:transform .25s;}
   .sidebar.open{transform:translateX(0);}
-  .main{margin-left:0; padding:20px; padding-top:72px; max-width:100vw;}
+  .main{margin-left:0; padding:20px; padding-top:72px;}
+  .topbar{display:flex !important;}
+}
+.topbar{display:none; position:fixed; top:0; left:0; right:0; height:56px; z-index:90; background:var(--bg2); border-bottom:1px solid var(--border); align-items:center; padding:0 16px; gap:12px; justify-content:space-between;}
+.overlay{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:80;}
+.overlay.show{display:block;}
+
+/* SEARCH */
+.search-wrap{position:relative; max-width:420px; margin-bottom:20px;}
+.search-wrap input{padding-left:40px;}
+.search-icon{position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:16px;}
+
+@media(max-width:680px){
+  .ev-form{grid-template-columns:1fr;}
+  .case-grid{grid-template-columns:1fr;}
+  .stats-strip{grid-template-columns:1fr 1fr;}
+  .result-grid{grid-template-columns:1fr;}
+  .redflag-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -156,6 +273,15 @@ section.tab.active{display:block;}
     <p id="adminStatus" style="margin-top:12px;font-size:13px;text-align:center;color:var(--muted);"></p>
   </div>
 </div>
+
+<!-- TOPBAR (mobile) -->
+<div class="topbar" id="topbar">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button onclick="toggleSidebar()" style="background:none;border:none;color:#ffffff;cursor:pointer;font-size:20px;">☰</button>
+    <span style="font-family:'Poppins',sans-serif;font-weight:700;color:#ffffff;">TITAN</span>
+  </div>
+</div>
+<div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
@@ -180,24 +306,25 @@ section.tab.active{display:block;}
 <!-- MAIN CONTENT -->
 <main class="main">
 
+<!-- NOTICE -->
 <div class="notice"><b>Jurisdiction Update:</b> Cybercrime in Pakistan is now handled by <b>NCCIA (National Cyber Crime Investigation Agency)</b>. Helpline: <b>1799</b> | Portal: complaint.nccia.gov.pk</div>
 
-<!-- DASHBOARD -->
+<!-- ═══════════════ DASHBOARD ═══════════════ -->
 <section class="tab active" id="dashboard">
   <h1 class="page-title">Welcome, Detective</h1>
   <p class="page-sub">Monitoring your digital safety and open cases.</p>
   <div class="stat-grid">
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(56,189,248,0.15);">🛡️</div><div class="stat-val">3</div><div class="stat-lbl">Active Cases</div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(56,189,248,0.15);">📎</div><div class="stat-val">12</div><div class="stat-lbl">Evidence Items</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(143,175,143,0.15);">🛡️</div><div class="stat-val">3</div><div class="stat-lbl">Active Cases</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(79,182,174,0.15);">📎</div><div class="stat-val">12</div><div class="stat-lbl">Evidence Items</div></div>
     <div class="stat-card"><div class="stat-icon" style="background:rgba(239,68,68,0.15);">⚠️</div><div class="stat-val">High</div><div class="stat-lbl">Risk Score</div></div>
-    <div class="stat-card"><div class="stat-icon" style="background:rgba(16,185,129,0.15);">🕐</div><div class="stat-val">2h</div><div class="stat-lbl">Last Activity</div></div>
+    <div class="stat-card"><div class="stat-icon" style="background:rgba(85,122,97,0.15);">🕐</div><div class="stat-val">2h</div><div class="stat-lbl">Last Activity</div></div>
   </div>
   <div class="dash-grid">
     <div class="glass">
       <h3 style="font-size:16px;margin-bottom:16px;">📈 Recent Evidence Timeline</h3>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--cyan);"></div><div><p style="font-size:13px;">Screenshot uploaded</p><p style="font-size:11px;color:#94a3b8;">Today, 10:42 AM</p></div></div>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--amber);"></div><div><p style="font-size:13px;">Voice note flagged for review</p><p style="font-size:11px;color:#94a3b8;">Yesterday, 6:15 PM</p></div></div>
-      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--success);"></div><div><p style="font-size:13px;">Case #TT-2216 opened</p><p style="font-size:11px;color:#94a3b8;">2 days ago</p></div></div>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--sage);"></div><div><p style="font-size:13px;">Screenshot uploaded</p><p style="font-size:11px;color:var(--muted);">Today, 10:42 AM</p></div></div>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--amber);"></div><div><p style="font-size:13px;">Voice note flagged for review</p><p style="font-size:11px;color:var(--muted);">Yesterday, 6:15 PM</p></div></div>
+      <div class="tl-dash-item"><div class="tl-dash-dot" style="background:var(--success);"></div><div><p style="font-size:13px;">Case #TT-2216 opened</p><p style="font-size:11px;color:var(--muted);">2 days ago</p></div></div>
     </div>
     <div class="glass">
       <h3 style="font-size:16px;margin-bottom:16px;">🚨 Threat Alerts</h3>
@@ -206,18 +333,112 @@ section.tab.active{display:block;}
     </div>
   </div>
   <div class="cta-box">
-    <div><h3 style="font-size:17px;margin-bottom:5px;">Have something to report?</h3><p style="font-size:13px;color:#94a3b8;">Start the AI Detective and get a structured case file in minutes.</p></div>
+    <div><h3 style="font-size:17px;margin-bottom:5px;">Have something to report?</h3><p style="font-size:13px;color:var(--muted);">Start the AI Detective and get a structured case file in minutes.</p></div>
     <button class="btn-primary" onclick="showTab('detective',document.querySelectorAll('.nav-btn')[1])">🔍 Analyze my incident</button>
   </div>
 </section>
 
-<!-- AI MEDIA CHECK -->
+<!-- ═══════════════ AI DETECTIVE ═══════════════ -->
+<section class="tab" id="detective">
+  <h1 class="page-title">AI Detective</h1>
+  <p class="page-sub">Describe what happened in English or Roman Urdu. TITAN will investigate step by step.</p>
+  <div class="glass">
+    <h3 style="margin-bottom:6px;">TITAN AI Detective & Legal Assistant</h3>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">Not just a chatbot — a step-by-step cyber investigation assistant that maps your case to PECA 2016 and builds a complaint draft.</p>
+    <div class="chat-log" id="chatLog"></div>
+    <div class="chat-row">
+      <input type="text" id="chatInput" placeholder="Type here and press Send...">
+      <button class="btn-primary" style="margin-top:0;white-space:nowrap;" onclick="handleSend()">Send ➤</button>
+    </div>
+    <div class="cat-confirm" id="catConfirm">
+      <label>TITAN's guess may be wrong — please confirm or correct the category:</label>
+      <select id="categorySelect"></select>
+      <button class="btn-primary" style="margin-top:0;" onclick="confirmCategory()">Confirm & Continue ✓</button>
+    </div>
+    <button class="btn-ghost" onclick="resetDetective()" style="margin-top:12px;">↺ Start Over</button>
+  </div>
+
+  <div id="analysisResult" style="display:none;">
+    <div class="glass glow" style="margin-top:20px;">
+      <h3 style="margin-bottom:12px;">Investigation Summary</h3>
+      <div id="badges" style="margin-bottom:12px;"></div>
+      <div class="score-ring"><div class="score-num" id="scoreNum">0%</div><div><div class="score-lbl">Scam Confidence Score</div><div id="tacticsBox" style="margin-top:6px;"></div></div></div>
+      <div id="inconsistencyBox"></div>
+      <div class="result-grid">
+        <div class="result-box"><h4>Applicable Law (PECA 2016)</h4><p id="pecaBox"></p></div>
+        <div class="result-box"><h4>Correct Jurisdiction</h4><p id="jurisdictionBox"></p></div>
+      </div>
+      <div class="result-box" style="margin-top:14px;">
+        <h4>Evidence Checklist (auto-marked from your answers)</h4>
+        <ul class="checklist" id="checklistBox"></ul>
+      </div>
+    </div>
+    <div class="glass" style="margin-top:20px;">
+      <h3 style="margin-bottom:8px;">Matched Case Files</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Previously reported cases that match this pattern.</p>
+      <div id="matchesBox"></div>
+    </div>
+    <div class="glass" style="margin-top:20px;">
+      <h3 style="margin-bottom:8px;">Complaint Draft</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:4px;">Generated from your investigation — ready for NCCIA submission. Report is in English for official submission. Use the guide below for submission instructions in your language.</p>
+      <div class="draft-wrap">
+        <div class="draft-stamp"><span>TITAN<br>DRAFT<br id="stampId"></span></div>
+        <textarea id="draftBox" readonly></textarea>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+        <button class="btn-ghost" onclick="copyDraft()">📋 Copy Draft</button>
+        <button class="btn-ghost" onclick="toggleGuide()" id="guideBtn">📖 How to Submit Your Report</button>
+      </div>
+      <div class="guide-wrap" id="submissionGuide">
+        <div id="guideEnglish">
+          <h4 style="color:var(--sage);margin-bottom:16px;">📋 How to Submit Your Report — Step by Step</h4>
+          <div class="guide-option"><h4>🌐 Option 1: Online Portal (Easiest)</h4><ol><li>Open <b style="color:var(--sage);">complaint.nccia.gov.pk</b></li><li>Click "File a Complaint"</li><li>Enter your name, CNIC number, and phone number</li><li>Copy the draft above and paste it in the complaint box</li><li>Upload any screenshots or evidence you have</li><li>Submit — you will receive an <b style="color:var(--sage);">official case number</b> — keep it safe</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">⏱️ Response time: Usually 24–48 hours</p></div>
+          <div class="guide-option"><h4>📞 Option 2: Helpline Call</h4><ol><li>Call <b style="color:var(--sage);">1799</b> (NCCIA helpline — free)</li><li>Say: "I want to report a cybercrime"</li><li>They will register the case and give you a complaint number</li></ol><p style="margin-top:8px;font-size:12px;color:var(--muted);">🕐 Monday–Saturday, 9 AM – 5 PM</p></div>
+          <div class="guide-option"><h4>🏢 Option 3: Physical Office</h4><ol><li>Visit your nearest <b style="color:var(--sage);">NCCIA / FIA office</b></li><li>Print this draft and bring it</li><li>Bring original CNIC and a photocopy</li><li>Bring printed evidence (screenshots, transaction records)</li></ol></div>
+          <div class="guide-warning"><h4>⚠️ Important — Please Read</h4><ul><li>Filing a complaint is <b>completely free</b></li><li>No real officer will <b>ask for money on WhatsApp or call</b> — that is fraud</li><li>You <b>cannot be refused</b> an FIR — it is your legal right</li><li>Report as soon as possible — <b>do not delete any evidence</b></li><li>After filing, <b>save the official case number</b> for tracking</li></ul></div>
+        </div>
+        <div id="guideUrdu" style="display:none;">
+          <h4 style="color:var(--sage);margin-bottom:16px;font-family:'IBM Plex Sans';">📋 درخواست جمع کرانے کا طریقہ</h4>
+          <div class="guide-option"><h4>🌐 طریقہ اول: آن لائن پورٹل</h4><ol><li>براہ کرم <b style="color:var(--sage);">complaint.nccia.gov.pk</b> کھولیں</li><li>"File a Complaint" پر کلک کریں</li><li>اپنا نام، شناختی کارڈ نمبر اور فون نمبر درج کریں</li><li>اوپر کی درخواست کاپی کر کے پیسٹ کریں</li><li>ثبوت اپ لوڈ کریں اور جمع کرائیں — آپ کو <b style="color:var(--sage);">سرکاری کیس نمبر</b> ملے گا</li></ol></div>
+          <div class="guide-option"><h4>📞 طریقہ دوم: ہیلپ لائن</h4><ol><li><b style="color:var(--sage);">1799</b> پر کال کریں (مفت)</li><li>بتائیں: "مجھے سائبر کرائم رپورٹ کرنا ہے"</li><li>شکایت نمبر نوٹ کر لیں</li></ol></div>
+          <div class="guide-warning"><h4>⚠️ اہم ہدایات</h4><ul><li>شکایت درج کرانا <b>بالکل مفت ہے</b></li><li>کوئی افسر <b>واٹس ایپ پر رقم نہیں مانگتا</b> — یہ فراڈ ہے</li><li>FIR سے <b>انکار نہیں کیا جا سکتا</b> — یہ آپ کا حق ہے</li><li>سرکاری کیس نمبر <b>ضرور محفوظ رکھیں</b></li></ul></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AI MEDIA CHECK ═══════════════ -->
 <section class="tab" id="mediacheck">
   <h1 class="page-title">AI Media Check</h1>
   <p class="page-sub">Analyze suspicious images, voice, or video for signs of AI generation or manipulation.</p>
   <div class="glass">
-    <div id="videoCheck">
-      <p style="font-size:14px;color:#94a3b8;margin-bottom:14px;">Real-time deepfake video detection needs frame-by-frame ML models. Use this checklist and escalate to NCCIA forensics for legal evidence.</p>
+    <div style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:14px;font-size:13px;color:var(--risk);margin-bottom:18px;line-height:1.6;"><b>Important:</b> This gives an indicative assessment only — not forensic-grade proof. For legal evidence, request verification through NCCIA's digital forensics lab.</div>
+    <div class="subtab-nav">
+      <button class="subtab-btn active" onclick="showSubtab('imgCheck',this)">🖼️ Image</button>
+      <button class="subtab-btn" onclick="showSubtab('voiceCheck',this)">🔊 Voice / Audio</button>
+      <button class="subtab-btn" onclick="showSubtab('videoCheck',this)">🎥 Video</button>
+    </div>
+    <div id="imgCheck">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Upload a suspicious image — Gemini Vision will inspect it for signs of AI-generation or manipulation.</p>
+      <div class="upload-box" onclick="document.getElementById('imgInput').click()"><div style="font-size:32px;margin-bottom:8px;">📷</div><p style="color:var(--muted);font-size:14px;">Click to upload an image (JPG/PNG)</p></div>
+      <input type="file" id="imgInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+      <img id="imgPreview" style="max-width:100%;max-height:260px;border-radius:10px;margin-top:14px;display:none;">
+      <button class="btn-primary" id="analyzeImgBtn" style="display:none;margin-top:14px;" onclick="analyzeImage()">✨ Analyze Image with Gemini</button>
+      <div class="scan-out" id="scanOutput"></div>
+    </div>
+    <div id="voiceCheck" style="display:none;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Reliable browser-based voice-clone detection needs specialized models TITAN doesn't carry. Use these red flags instead.</p>
+      <div class="redflag-grid">
+        <div class="redflag-item"><h4>🔊 Flat or robotic tone</h4><p>Cloned voices lack natural breathing pauses, micro-hesitations, or emotional variation.</p></div>
+        <div class="redflag-item"><h4>🎚️ Pitch/pacing glitches</h4><p>Sudden unnatural jumps in pitch or speed, especially at word boundaries.</p></div>
+        <div class="redflag-item"><h4>🌐 Background mismatch</h4><p>Cloned audio often has unnaturally clean or inconsistent background noise.</p></div>
+        <div class="redflag-item"><h4>⏱️ Scripted urgency</h4><p>Voice scams rely on panic to stop you noticing audio flaws — slow down before reacting.</p></div>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--muted);">Verified tools: <a href="https://www.resemble.ai/detect/" target="_blank" style="color:var(--sage);">Resemble Detect</a>, <a href="https://www.pindrop.com" target="_blank" style="color:var(--sage);">Pindrop</a></p>
+    </div>
+    <div id="videoCheck" style="display:none;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Real-time deepfake video detection needs frame-by-frame ML models. Use this checklist and escalate to NCCIA forensics for legal evidence.</p>
       <div class="redflag-grid">
         <div class="redflag-item"><h4>👁️ Unnatural blinking</h4><p>Metronomic blinking that looks too regular or too rare.</p></div>
         <div class="redflag-item"><h4>💋 Lip-sync drift</h4><p>Watch mouth shapes against audio on consonants like "B," "M," "P."</p></div>
