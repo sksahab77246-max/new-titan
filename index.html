@@ -60,7 +60,7 @@ input:focus,textarea:focus,select:focus{outline:2px solid var(--cyan); outline-o
 textarea{resize:vertical; min-height:120px;}
 
 /* PAGE TITLE */
-.page-title{font-size:28px; font-weight:700; margin-bottom:6px; background:linear-gradient(90deg,var(--cyan),#7DD3FC); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.page-title{font-size:28px; font-weight:700; margin-bottom:6px; color:#0B2545; -webkit-text-fill-color:#0B2545;}
 .page-sub{color:var(--muted); font-size:14px; margin-bottom:28px;}
 
 /* TABS */
@@ -139,7 +139,7 @@ section.tab.active{display:block;}
 .case-full{display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); font-size:13.5px; line-height:1.7;}
 .case-card.open .case-full{display:block;}
 .detail-b{margin-bottom:12px;}
-.detail-b b{color:var(--sage-l); display:block; margin-bottom:4px;}
+.detail-b b{color:#7DD3FC; display:block; margin-bottom:4px;}
 .stats-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px;}
 @media(max-width:680px){.stats-strip{grid-template-columns:1fr 1fr;}}
 .stat-box{text-align:center; padding:14px 8px; border-radius:10px; border:1px solid var(--border); background:var(--navy);}
@@ -174,7 +174,7 @@ section.tab.active{display:block;}
 .peca-card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:22px; margin-bottom:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3); transition:box-shadow .2s,border-color .2s;}
 .peca-card h3{font-size:15px; margin-bottom:12px; display:flex; align-items:center; gap:10px;}
 .peca-section{margin-bottom:12px;}
-.peca-section .lbl{font-size:11px; color:var(--sage-l); font-family:'IBM Plex Mono'; margin-bottom:4px;}
+.peca-section .lbl{font-size:11px; color:#7DD3FC; font-family:'IBM Plex Mono'; margin-bottom:4px;}
 .peca-section p,.peca-section ul{font-size:13px; color:var(--muted); line-height:1.6;}
 .peca-section ul{padding-left:16px;}
 
@@ -938,7 +938,7 @@ function renderLibrary(){
       <p style="font-size:13px;color:var(--sage);margin-top:10px;font-weight:600;">▾ ${isUr?'Poori story parhein':'Read full story'}</p>
       <div class="case-full">
         <p style="margin-bottom:12px;">${isUr?c.fullStory_ur:c.fullStory}</p>
-        <p><b style="color:var(--sage-l);">Outcome:</b> ${isUr?c.outcome_ur:c.outcome}</p>
+        <p><b style="color:#7DD3FC;">Outcome:</b> ${isUr?c.outcome_ur:c.outcome}</p>
         <a href="${c.sourceUrl}" target="_blank" onclick="event.stopPropagation()" style="color:var(--cyan);font-size:13px;font-weight:600;display:inline-block;margin-top:10px;">🔗 ${isUr?'Original source:':'Read original:'} ${c.sourceName}</a>
       </div>
     </div>`).join('');
