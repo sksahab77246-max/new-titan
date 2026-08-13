@@ -186,8 +186,11 @@ section.tab.active{display:block;}
 .alert-row:last-child{border-bottom:none;}
 .cta-box{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05);}
 
-.guide-wrap{display:none; margin-top:22px; background:var(--navy); border:1px solid rgba(61,122,90,0.25); border-radius:12px; padding:24px;}
-.guide-option{margin-bottom:18px; padding:16px; border:1px solid var(--border); border-radius:10px; background:var(--card);}
+.guide-wrap{display:none; margin-top:22px; background:var(--navy); border:1px solid rgba(125,211,252,0.2); border-radius:12px; padding:24px; overflow:hidden; box-sizing:border-box;}
+.guide-option{margin-bottom:18px; padding:16px; border:1px solid var(--border); border-radius:10px; background:var(--card); overflow:hidden; box-sizing:border-box;}
+.guide-option h4{color:var(--amber); font-size:14px; margin-bottom:10px;}
+.guide-option ol,.guide-option ul{padding-left:20px; padding-right:8px; font-size:13.5px; line-height:2.1; color:var(--text); margin:0; box-sizing:border-box;}
+.guide-option li{word-break:break-word; overflow-wrap:break-word;}
 .guide-warning{padding:16px; background:rgba(239,68,68,0.08); border:1px solid rgba(220,38,38,0.25); border-radius:10px;}
 
 /* ADMIN PANEL */
